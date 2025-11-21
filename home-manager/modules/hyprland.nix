@@ -44,31 +44,31 @@
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
       };
 
-      # general = {
-      #   gaps_in = 5;
-      #   gaps_out = 20;
-      #   border_size = 3;
-      #   "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-      #   "col.inactive_border" = "rgba(595959aa)";
+      general = {
+        gaps_in = 5;
+        gaps_out = 20;
+        border_size = 3;
+        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = "rgba(595959aa)";
 
-      #   layout = "dwindle";
-      # };
+        layout = "dwindle";
+      };
 
-      # decoration = {
-      #   rounding = 10;
+      decoration = {
+        rounding = 10;
 
-      #   blur = {
-      #     enabled = true;
-      #     size = 16;
-      #     passes = 2;
-      #     new_optimizations = true;
-      #   };
+        blur = {
+          enabled = true;
+          size = 16;
+          passes = 2;
+          new_optimizations = true;
+        };
 
-      #   drop_shadow = true;
-      #   shadow_range = 4;
-      #   shadow_render_power = 3;
-      #   "col.shadow" = "rgba(1a1a1aee)";
-      # };
+        drop_shadow = true;
+        shadow_range = 4;
+        shadow_render_power = 3;
+        "col.shadow" = "rgba(1a1a1aee)";
+      };
 
       animations = {
         enabled = true;
@@ -86,31 +86,31 @@
         ];
       };
 
-      # dwindle = {
-      #   pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-      #   preserve_split = true; # you probably want this
-      # };
+      dwindle = {
+        pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        preserve_split = true; # you probably want this
+      };
 
-      # gestures = {
-      #   workspace_swipe = true;
-      #   workspace_swipe_fingers = 3;
-      #   workspace_swipe_invert = false;
-      #   workspace_swipe_distance = 200;
-      #   workspace_swipe_forever = true;
-      # };
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_fingers = 3;
+        workspace_swipe_invert = false;
+        workspace_swipe_distance = 200;
+        workspace_swipe_forever = true;
+      };
 
-      # misc = {
-      #   animate_manual_resizes = true;
-      #   animate_mouse_windowdragging = true;
-      #   enable_swallow = true;
-      #   render_ahead_of_time = false;
-      #   disable_hyprland_logo = true;
-      # };
+      misc = {
+        animate_manual_resizes = true;
+        animate_mouse_windowdragging = true;
+        enable_swallow = true;
+        render_ahead_of_time = false;
+        disable_hyprland_logo = true;
+      };
 
-      # windowrule = [
-      #   "float, ^(imv)$"
-      #   "float, ^(mpv)$"
-      # ];
+      windowrule = [
+        "float, ^(imv)$"
+        "float, ^(mpv)$"
+      ];
 
       exec-once = [
         "swww init"
