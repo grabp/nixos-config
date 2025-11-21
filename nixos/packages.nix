@@ -10,7 +10,7 @@
     gparted
     vscode
     wezterm
-    brave
+    # brave
     xfce.thunar
     xfce.xfce4-pulseaudio-plugin
     networkmanagerapplet

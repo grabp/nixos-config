@@ -5,10 +5,11 @@
     xwayland.enable = true;
 
     settings = {
+      "$mod" = "SUPER";
       "$mainMod" = "SUPER";
 
       monitor = [
-        "HDMI-A-1,3440x1440,0x0,1.5"
+        "HDMI-A-1,3440x1440,0x0,1"
       ];
 
       xwayland = {

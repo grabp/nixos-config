@@ -5,6 +5,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./graphics-configuration.nix
       ./modules/bundle.nix
       ./packages.nix
     ];
