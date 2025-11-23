@@ -8,5 +8,6 @@
     ./hyprlock.nix
     ./fuzzel.nix
     ./starship.nix
+    ./eza.nix
   ];
 }

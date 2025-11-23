@@ -49,6 +49,7 @@
     bluez
     bluez-tools
     btop
+    bat
 
     # GUI utils
     feh
