@@ -1,9 +1,6 @@
-
 {
-  programs.eza = {
+  programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-    git = true;
-    icons = "always";
   };
 }

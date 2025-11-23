@@ -21,7 +21,6 @@
       name = "catppuccin-mocha-dark-cursors";
       size = 9;
     };
-    
   };
  
 }

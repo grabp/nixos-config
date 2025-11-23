@@ -1,7 +1,6 @@
 { config, ... }:
 
 {
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -17,12 +16,6 @@
 
     localVariables = {
       ZSH_TMUX_AUTOSTART = true;
-      FZF_DEFAULT_OPTS=" \
-      --color=bg+:#313244,bg:-1,spinner:#f5e0dc,hl:#f38ba8 \
-      --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-      --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-      --color=selected-bg:#45475a \
-      --color=border:#313244,label:#cdd6f4";
     };   
  
     shellAliases =
@@ -30,35 +23,39 @@
         flakeDir = "~/nixos-config";
         configuration = "BD-1";
       in {
+      # Nixos
       rb = "sudo nixos-rebuild switch --flake ${flakeDir}#${configuration}";
       upd = "nix flake update ${flakeDir}";
       upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}";
 
+      # Home-manager
       hms = "home-manager switch --flake ${flakeDir}";
 
+      # Edit Configs
       conf = "nvim ${flakeDir}/nixos/configuration.nix";
       pkgs = "nvim ${flakeDir}/nixos/packages.nix";
 
-      ll = "ls -l";
-      ".." = "cd ..";
+      ls = "eza --icons";
+      ll = "eza -lah --icons";
+      tree = "eza -lah --tree --icons --level = 3 --ignore-glob = 'node_modules|.git|.DS_Store|.nvm|.turbo'";
+
+      cat = "bat";
+      less = "bat --pager = 'less -R'";
+
+      cd = "z";
+      ".." = "z ..";
+      "..." = "z ...";
+      
       vim = "nvim";
       v = "nvim";
       se = "sudoedit";
+
       ff = "fastfetch";
     };
 
     shellGlobalAliases = {
       UUID = "$(uuidgen | tr -d \\n)";
     };
-
-    # siteFunctions = {
-    #   mkcd = ''
-    #     mkdir --parents "$1" && cd "$1"
-    #   '';
-    #   batdiff = ''
-    #     git diff --name-only --relative --diff-filter=d | xargs bat --pager='less -R' --diff
-    #   '';
-    # };
 
     history = {
       size = 10000;
@@ -95,6 +92,15 @@
       useFriendlyNames = true;
     };
 
+    # Loaded first
+    envExtra = ''
+      export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:-1,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#6C7086,label:#CDD6F4"
+    '';
     initContent = ''
       # fzf https://github.com/Aloxaf/fzf-tab
       # # disable sort when completing `git checkout`
@@ -112,9 +118,21 @@
       # switch group using `<` and `>`
       zstyle ':fzf-tab:*' switch-group '<' '>'
 
-      # # | ftb-tmux-popup
-      # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-      # zstyle ':fzf-tab:*' popup-min-size 80 12
+      # | ftb-tmux-popup
+      zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+      zstyle ':fzf-tab:*' popup-min-size 80 12
+
+      # Utils 
+      timezsh() {
+        shell=''${1-$SHELL}
+        for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+      }
+      batdiff() {
+          git diff --name-only --relative --diff-filter=d | xargs bat --pager='less -R' --diff
+      }
+
+      # Fast Syntax Highlighting Colors
+      fast-theme XDG:catppuccin-mocha
     '';
     profileExtra = ''
     '';

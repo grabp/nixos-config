@@ -9,5 +9,8 @@
     ./fuzzel.nix
     ./starship.nix
     ./eza.nix
+    ./bat.nix
+    ./zoxide.nix
+    ./btop.nix
   ];
 }
