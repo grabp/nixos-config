@@ -165,6 +165,7 @@
     home-manager
     killall
     time
+    wlroots
   ];
 
   # Set env variables

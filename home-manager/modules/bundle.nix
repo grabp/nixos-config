@@ -15,5 +15,8 @@
     ./fzf.nix
     ./ripgrep.nix
     ./mako.nix
+    ./direnv.nix
+    ./jq.nix
+    ./obs-studio.nix
   ];
 }

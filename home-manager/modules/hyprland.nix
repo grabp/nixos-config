@@ -111,7 +111,16 @@
         disable_hyprland_logo = true;
       };
 
-      windowrulev2 = "float, class:^(org.pulseaudio.pavucontrol)$";
+      windowrulev2 = [
+        # Floating windows
+        "float, center, pin, class:(org.pulseaudio.pavucontrol)"
+        "float, center, pin, class:(.blueman-manager-wrapped)"
+
+        "workspace 1 silent, title:(wezterm)"
+        "workspace 2 silent, class:(code)"
+        "workspace 9 silent, class:(WebCord)"
+        "workspace 0 silent, class:(spotify)"
+      ];
 
       exec-once = [
         "swww-daemon"
@@ -121,7 +130,15 @@
         "wl-paste --type image --watch cliphist store"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        # Autostart GUI apps
         "blueman-applet"
+        "[workspace 1 silent] wezterm"
+        "[workspace 2 silent] code"
+        "[workspace 3 silent] brave"
+        "[workspace 7 silent] 1password"
+        "[workspace 8 silent] steam"
+        "[workspace 9 silent] webcord"
+        "[workspace 0 silent] spotify"
       ];
 
       workspace = [
@@ -170,6 +187,7 @@
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
+        "$mainMod, `, workspace, special"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
         "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
@@ -183,7 +201,7 @@
         "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
         "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
 
-        "SUPER, `, movetoworkspace, special"
+        "$mainMod SHIFT, `, movetoworkspace, special"
 
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"

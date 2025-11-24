@@ -6,7 +6,6 @@
 
   environment.systemPackages = with pkgs; [
     # Desktop apps
-    discord
     webcord
     gparted
     vscode
@@ -65,6 +64,15 @@
     # WMs and stuff
     hyprland
 
+    # xdg-desktop-portal-hyprland dependencies just to be sure
+    hyprland-protocols
+    hyprlang
+    hyprutils
+    hyprwayland-scanner
+    libdrm
+    dconf
+    sdbus-cpp
+
     # Waybar
     waybar
     libappindicator
@@ -93,6 +101,7 @@
     hyprland-qt-support
 
     # Screensharing
+    xdg-utils
     xdg-desktop-portal
     xdg-desktop-portal-hyprland
     wireplumber
