@@ -38,7 +38,7 @@
       'Noto Color Emoji',
       }
 
-      config.font_size = 20.0
+      config.font_size = 14.0
 
       config.color_scheme = "Catppuccin Mocha" 
       config.window_background_opacity = 0.6

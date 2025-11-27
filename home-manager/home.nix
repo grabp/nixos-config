@@ -1,7 +1,17 @@
 { pkgs, ...}:
 {
+
+  catppuccin = {
+    enable = true;
+    accent = "peach";
+    flavor = "mocha";
+
+    # cache = {
+    #   enable = true;
+    # };
+  };
+
   imports = [
-    ./zsh.nix
     ./import-home-dir.nix
     ./modules/bundle.nix
   ];

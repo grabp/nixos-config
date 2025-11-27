@@ -19,8 +19,6 @@
     # Plymouth Cattppuccin
     plymouth = {
       enable = true;
-      theme = "catppuccin-mocha";
-      themePackages = [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
     };
 
     # Enable 'Silent Boot'

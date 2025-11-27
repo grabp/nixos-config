@@ -10,6 +10,16 @@
       ./modules/bundle.nix
       ./packages.nix
     ];
+  
+  catppuccin = {
+    accent = "peach";
+    enable = true;
+    flavor = "mocha";
+
+    cache = {
+      enable = true;
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

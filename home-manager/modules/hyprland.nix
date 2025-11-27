@@ -10,8 +10,6 @@
       "$mod" = "SUPER";
       "$mainMod" = "SUPER";
 
-      source = "~/.config/hypr/theme.conf";
-
       monitor = [
         "HDMI-A-1,3440x1440@240,0x0,1"
       ];
@@ -119,7 +117,7 @@
         "workspace 1 silent, title:(wezterm)"
         "workspace 2 silent, class:(code)"
         "workspace 9 silent, class:(WebCord)"
-        "workspace 0 silent, class:(spotify)"
+        "workspace 0 silent, title:(Spotify Premium)"
       ];
 
       exec-once = [

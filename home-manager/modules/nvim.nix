@@ -1,5 +1,5 @@
 {
-  programs.fuzzel = {
+  programs.neovim = {
     enable = true;
   };
 }

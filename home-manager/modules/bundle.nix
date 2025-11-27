@@ -1,5 +1,7 @@
 {
   imports = [
+    ./zsh.nix
+    ./nvim.nix
     ./git.nix
     ./tmux.nix
     ./wezterm.nix
