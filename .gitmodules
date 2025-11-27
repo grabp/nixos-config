@@ -1,0 +1,3 @@
+[submodule "home-manager/home-dir/nvim"]
+	path = home-manager/home-dir/nvim
+	url = git@github.com:grabp/nvim-config.git

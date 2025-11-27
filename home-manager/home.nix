@@ -6,6 +6,11 @@
     accent = "peach";
     flavor = "mocha";
 
+    # Neovim will be configured with lazyvim
+    nvim = {
+      enable = false;
+    };
+
     # cache = {
     #   enable = true;
     # };

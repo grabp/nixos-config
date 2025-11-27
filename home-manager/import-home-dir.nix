@@ -13,6 +13,12 @@
       target = ".config/fsh";
       recursive = true;
     };
+
+    nvim = {
+      source = config.lib.file.mkOutOfStoreSymlink ./home-dir/nvim;
+      target = ".config/nvim";
+      recursive = true;
+    };
   };
 }
 
