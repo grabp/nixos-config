@@ -6,9 +6,9 @@
     accent = "peach";
     flavor = "mocha";
 
-    # cache = {
-    #   enable = true;
-    # };
+    nvim = {
+      enable = false;
+    };
   };
 
   imports = [

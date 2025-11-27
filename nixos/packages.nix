@@ -47,6 +47,7 @@
     wev
     bluez
     bluez-tools
+    chafa
 
     # GUI utils
     feh

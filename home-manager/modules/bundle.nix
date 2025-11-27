@@ -20,5 +20,6 @@
     ./direnv.nix
     ./jq.nix
     ./obs-studio.nix
+    # ./nixvim/bundle.nix
   ];
 }
