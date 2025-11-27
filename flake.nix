@@ -8,12 +8,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # https://nix.catppuccin.com/getting-started/flakes/
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    catppuccin,
     ...
   }@inputs :
     let 
@@ -23,13 +26,16 @@
       inherit system;
       modules = [ 
         ./nixos/configuration.nix
+        catppuccin.nixosModules.catppuccin
       ];
     };
 
-    home-manager.backupFileExtension = "backup";
     homeConfigurations.grabowskip = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [./home-manager/home.nix];
+      modules = [
+        ./home-manager/home.nix
+        catppuccin.homeModules.catppuccin
+      ];
     };
   };
 }

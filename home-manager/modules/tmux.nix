@@ -41,24 +41,6 @@
           set -g @resurrect-capture-pane-contents 'on'
         '';
       }
-      {
-        plugin = tmuxPlugins.catppuccin;
-        extraConfig = ''
-          # Change tmux theme
-          set -g @catppuccin_flavour 'mocha'
-          set -g @catppuccin_window_status_style 'rounded'
-
-          set -g @catppuccin_window_current_text " 󰈈 #W "
-          set -g @catppuccin_window_text " 󰈉 #W "
-
-          set -g status-right-length 100
-          set -g status-left-length 100
-          set -g status-left ""
-          set -g status-right "#{E:@catppuccin_status_application}"
-          set -ag status-right "#{E:@catppuccin_status_session}"
-          set -ag status-right "#{E:@catppuccin_status_uptime}"
-        '';
-      }
     ];
 
     extraConfig = ''
@@ -66,6 +48,19 @@
       set -ga terminal-overrides ",*256col*:Tc"
       set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
       set-environment -g COLORTERM "truecolor"
+
+      # Theme
+      set -g @catppuccin_window_status_style 'rounded'
+
+      set -g @catppuccin_window_current_text " 󰈈 #W "
+      set -g @catppuccin_window_text " 󰈉 #W "
+
+      set -g status-right-length 100
+      set -g status-left-length 100
+      set -g status-left ""
+      set -g status-right "#{E:@catppuccin_status_application}"
+      set -ag status-right "#{E:@catppuccin_status_session}"
+      set -ag status-right "#{E:@catppuccin_status_uptime}"
 
       # Keybindings
 
