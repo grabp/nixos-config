@@ -5,7 +5,7 @@
     ./git.nix
     ./tmux.nix
     ./wezterm.nix
-    ./waybar.nix
+    # ./waybar.nix
     ./hyprland.nix
     ./hyprlock.nix
     ./fuzzel.nix
@@ -20,6 +20,6 @@
     ./direnv.nix
     ./jq.nix
     ./obs-studio.nix
-    # ./nixvim/bundle.nix
+    ./hyprpanel.nix
   ];
 }

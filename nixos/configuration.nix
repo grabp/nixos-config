@@ -9,6 +9,7 @@
       ./bootloader.nix
       ./modules/bundle.nix
       ./packages.nix
+      ./fonts.nix
     ];
   
   catppuccin = {

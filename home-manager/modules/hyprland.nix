@@ -126,7 +126,8 @@
         "swww img ~/.config/wallpapers/Cloudsnight.jpg"
 
         # Bar
-        "waybar"
+        # "waybar"
+        "hyprpanel"
 
         # Clipboard
         "wl-paste --type text --watch cliphist store"
