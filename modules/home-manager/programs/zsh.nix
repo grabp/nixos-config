@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, hostname, ... }:
 
 {
   programs.zsh = {
@@ -22,11 +22,8 @@
       let
         flakeDir = "~/nixos-config";
       in {
-      # Nixos
-      rb = "sudo nixos-rebuild switch --flake ${flakeDir}#BD-1";
-      rbb = "sudo nixos-rebuild --install-bootloader boot --flake ${flakeDir}#BD-1";
-      # Work laptop
-      rbw = "sudo nix run nix-darwin -- switch --flake ${flakeDir}#grabowskip-work";
+      rb = "sudo nixos-rebuild switch --flake ${flakeDir}#${hostname}";
+      rbb = "sudo nixos-rebuild --install-bootloader boot --flake ${flakeDir}#${hostname}";
 
       upd = "nix flake update ${flakeDir}";
       upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}";

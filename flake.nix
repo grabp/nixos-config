@@ -39,14 +39,14 @@
       fullName = "Patryk Grabowski";
       name = "grabowskip";
     };
-    # "patryk.grabowski@iqvia.com" = {
-    #   inherit (users.grabowskip)
-    #     avatar
-    #     email
-    #     fullName
-    #     ;
-    #   name = "patryk.grabowski@iqvia.com";
-    # };
+    "patryk.grabowski@iqvia.com" = {
+      inherit (users.grabowskip)
+        avatar
+        email
+        fullName
+        ;
+      name = "patryk.grabowski@iqvia.com";
+    };
   };
 
 # Function for NixOS system configuration
@@ -82,7 +82,7 @@
     home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs { inherit system; };
       extraSpecialArgs = {
-        inherit inputs outputs;
+        inherit inputs outputs hostname;
         userConfig = users.${username};
         nhModules = "${self}/modules/home-manager";
       };
@@ -94,11 +94,11 @@
   in
   {
     nixosConfigurations = {
-      main-pc = mkNixosConfiguration "skocznia" "grabowskip";
+      skocznia = mkNixosConfiguration "skocznia" "grabowskip";
     };
 
     darwinConfigurations = {
-      work-pc = mkDarwinConfiguration "ZTDMWCFP3J5YY" "patryk.grabowski@iqvia.com";
+      ZTDMWCFP3J5YY = mkDarwinConfiguration "ZTDMWCFP3J5YY" "patryk.grabowski@iqvia.com";
     };
 
     homeConfigurations = {
