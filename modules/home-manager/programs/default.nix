@@ -14,6 +14,7 @@
     ./ripgrep.nix
     ./direnv.nix
     ./jq.nix
+    ./fastfetch.nix
   ];
 }
 
