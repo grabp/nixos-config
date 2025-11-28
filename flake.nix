@@ -13,6 +13,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # NixOS profiles to optimize settings for different hardware
+    hardware.url = "github:nixos/nixos-hardware";
+
     # https://nix.catppuccin.com/getting-started/flakes/
     catppuccin.url = "github:catppuccin/nix/release-25.05";
   };
@@ -24,36 +27,83 @@
     home-manager,
     catppuccin,
     ...
-  }@inputs : {
-    # NixOS PC
-    nixosConfigurations.BD-1 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [ 
-        ./nixos/configuration.nix
+  }@inputs: 
+  let
+    inherit (self) outputs;
+
+# User configuration
+  users = {
+    grabowskip = {
+      avatar = ./files/avatar/face;
+      email = "grabowskip@icloud.com";
+      fullName = "Patryk Grabowski";
+      name = "grapbowskip";
+    };
+    # "patryk.grabowski@iqvia.com" = {
+    #   inherit (users.grabowskip)
+    #     avatar
+    #     email
+    #     fullName
+    #     ;
+    #   name = "patryk.grabowski@iqvia.com";
+    # };
+  };
+
+# Function for NixOS system configuration
+  mkNixosConfiguration =
+    hostname: username:
+    nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs outputs hostname;
+        userConfig = users.${username};
+        nixosModules = "${self}/modules/nixos";
+      };
+      modules = [
+        ./hosts/${hostname}
         catppuccin.nixosModules.catppuccin
       ];
     };
-    homeConfigurations.grabowskip = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      modules = [
-        ./home-manager/home-linux.nix
-        catppuccin.homeModules.catppuccin
-      ];
+# Function for nix-darwin system configuration
+  mkDarwinConfiguration =
+    hostname: username:
+    nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      specialArgs = {
+        inherit inputs outputs hostname;
+        userConfig = users.${username};
+        darwinModules = "${self}/modules/darwin";
+      };
+      modules = [ ./hosts/${hostname} ];
     };
 
-    # Work MacBook
-    darwinConfigurations.grabowskip-work = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
+# Function for Home Manager configuration
+  mkHomeConfiguration =
+    system: username: hostname:
+    home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs { inherit system; };
+      extraSpecialArgs = {
+        inherit inputs outputs;
+        userConfig = users.${username};
+        nhModules = "${self}/modules/home-manager";
+      };
       modules = [
-        ./darwin/work/configuration.nix
-      ];
-    };
-    homeConfigurations."patryk.grabowski@iqvia.com" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-      modules = [
-        ./home-manager/home-darwin.nix
+        ./home/${username}/${hostname}
         catppuccin.homeModules.catppuccin
       ];
+    }; 
+  in
+  {
+    nixosConfigurations = {
+      main-pc = mkNixosConfiguration "skocznia" "grabowskip";
+    };
+
+    darwinConfigurations = {
+      work-pc = mkDarwinConfiguration "ZTDMWCFP3J5YY" "patryk.grabowski@iqvia.com";
+    };
+
+    homeConfigurations = {
+      "grabowskip@nixos" = mkHomeConfiguration "x86_64-linux" "grabowskip" "skocznia";
+      "patryk.grabowskip@icloud.com@ZTDMWCFP3J5YY" = mkHomeConfiguration "aarch64-darwin" "patryk.grabowski@iqvia.com" "ZTDMWCFP3J5YY";
     };
   };
 }

@@ -127,7 +127,6 @@
 
         # Bar
         # "waybar"
-        "hyprpanel"
 
         # Clipboard
         "wl-paste --type text --watch cliphist store"

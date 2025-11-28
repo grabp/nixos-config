@@ -1,16 +1,11 @@
 # Main NixOS configuration file
-{ config, pkgs, ... }:
+{ pkgs, userConfig, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./graphics-configuration.nix
-      ./bootloader.nix
-      ./modules/bundle.nix
-      ./packages.nix
-      ./fonts.nix
-    ];
+  imports = [
+    ./bootloader.nix
+    ./fonts.nix
+  ];
   
   catppuccin = {
     accent = "peach";
@@ -21,9 +16,6 @@
       enable = true;
     };
   };
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -51,16 +43,13 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "pl";
-    variant = "";
+    xkb = {
+      layout = "pl";
+      variant = "";
+    };
   };
 
   # Configure console keymap
@@ -68,22 +57,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   # Enable bluetooth
   hardware.bluetooth = {
@@ -97,15 +70,6 @@
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.grabowskip = {
-    isNormalUser = true;
-    description = "Patryk Grabowski";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-    shell = pkgs.zsh;
-  };
-
   # Install zsh
   programs.zsh = {
     enable = true;
@@ -113,24 +77,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  ## Hyprland
-  # Install hyperland
-  programs.hyprland = {
-    enable = true;
-  };
-
-  # Install hyprlock
-  programs.hyprlock.enable = true;
-
-  # Install hypridle
-  services.hypridle.enable = true;
-
-  # Turn on pam security services for hyprlock
-  security = {
-    polkit.enable = true;
-    pam.services.hyprlock = {};
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -143,18 +89,16 @@
     killall
     time
     wlroots
-
-    # Enables v4l2loopback GUI utilities.
-    v4l-utils
+    gcc
+    glib
+    gnumake
+    mesa
   ];
 
   # Set env variables
   environment.variables = {
     TERMINAL = "${pkgs.wezterm}/bin/wezterm";
     EDITOR = "nvim";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "Hyprland";
   };
 
   environment.sessionVariables = {
@@ -162,6 +106,43 @@
     NIXOS_OZONE_WL = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     WLR_NO_HARDWARE_CURSORS = "1";
+  };
+
+  # Enable PipeWire for sound
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  # User configuration
+  users.users.${userConfig.name} = {
+    description = userConfig.fullName;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    isNormalUser = true;
+    shell = pkgs.zsh;
+  };
+
+  # Additional services
+  services.locate.enable = true;
+
+  # OpenSSH daemon
+  services.openssh.enable = true;
+
+  # Common container config
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
 
   # This value determines the NixOS release from which the default

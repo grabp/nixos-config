@@ -25,14 +25,5 @@
 
       font-awesome
     ];
-    enableDefaultPackages = true;
-    # fontconfig = {
-    #   enable = true;
-    #   defaultFonts = {
-    #     sansSerif = ["Noto Sans"];
-    #     monospace = ["DejaVu Sans Mono"];
-    #     emoji = ["Noto Color Emoji"];
-    #   };
-    # };
   };
 }
