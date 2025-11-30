@@ -1,0 +1,25 @@
+layout {
+  // Templates
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    pane split_direction="Vertical" {
+      children
+    }
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
+  // Tabs
+  tab name="nixos-config (root)" cwd="~/nixos-config" split_direction="vertical" {
+    pane command="nvim" {
+      focus true
+    }
+    pane size="25%" split_direction="horizontal" {
+      pane
+      pane
+    }
+  }
+}

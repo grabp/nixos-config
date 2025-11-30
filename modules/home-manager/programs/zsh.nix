@@ -14,9 +14,9 @@
       };
     };
 
-    localVariables = {
-      ZSH_TMUX_AUTOSTART = true;
-    };   
+    # localVariables = {
+    #   ZSH_TMUX_AUTOSTART = true;
+    # };   
  
     shellAliases =
       let
@@ -26,14 +26,14 @@
       rbb = "sudo nixos-rebuild --install-bootloader boot --flake ${flakeDir}#${hostname}";
 
       upd = "nix flake update ${flakeDir}";
-      upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}";
+      upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}#${hostname}";
+
+      # Zellij
+      z = "zellij";
+      zd = "zellij --layout ~/default.kdl";
 
       # Home-manager
       hms = "home-manager switch --flake ${flakeDir}";
-
-      # Edit Configs
-      conf = "nvim ${flakeDir}/nixos/configuration.nix";
-      pkgs = "nvim ${flakeDir}/nixos/packages.nix";
 
       ls = "eza --icons";
       ll = "eza -lah --icons";
@@ -86,7 +86,6 @@
         # "ohmyzsh/ohmyzsh path:plugins/nvm"
         "ohmyzsh/ohmyzsh path:plugins/extract"
         "ohmyzsh/ohmyzsh path:plugins/command-not-found"
-        "ohmyzsh/ohmyzsh path:plugins/tmux"
         "ohmyzsh/ohmyzsh path:plugins/sudo"
       ];
       useFriendlyNames = true;
