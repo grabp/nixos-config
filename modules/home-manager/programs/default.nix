@@ -15,6 +15,7 @@
     ./direnv.nix
     ./jq.nix
     ./fastfetch.nix
+    ./lazygit.nix
   ];
 }
 
