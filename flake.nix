@@ -18,6 +18,11 @@
 
     # https://nix.catppuccin.com/getting-started/flakes/
     catppuccin.url = "github:catppuccin/nix/release-25.05";
+
+    solaar = {
+      url = "https://flakehub.com/f/Svenum/Solaar-Flake/0.1.4.tar.gz"; # For latest stable version
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -26,6 +31,7 @@
     nix-darwin,
     home-manager,
     catppuccin,
+    solaar,
     ...
   }@inputs: 
   let
@@ -59,8 +65,9 @@
         nixosModules = "${self}/modules/nixos";
       };
       modules = [
-        ./hosts/${hostname}
         catppuccin.nixosModules.catppuccin
+        solaar.nixosModules.default
+        ./hosts/${hostname}
       ];
     };
 # Function for nix-darwin system configuration
