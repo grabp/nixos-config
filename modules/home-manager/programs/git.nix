@@ -1,10 +1,13 @@
 {
   programs.git = {
     enable = true;
-    userName = "Patryk Grabowski";
-    userEmail = "grabowskip@icloud.com";
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Patryk Grabowski";
+        email = "grabowskip@icloud.com";
+      };
+
       blame = {
         coloring = "highlightRecent";
         date = "relative";

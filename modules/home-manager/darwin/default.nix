@@ -17,8 +17,7 @@
   #   brewCasks.raycast
   #   brewCasks.stats
   # ];
-  # targets.darwin.copyApps = {
-  #   enable = true;
-  # };
-
+  targets.darwin.copyApps = {
+    enable = true;
+  };
 }
