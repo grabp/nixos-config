@@ -69,6 +69,11 @@
       unzip
       openssl
       fnm
+      pre-commit
+      sqlite
+      terraform
+      redis
+      postgresql_15
     ]
     ++ lib.optionals stdenv.isDarwin [
       hidden-bar

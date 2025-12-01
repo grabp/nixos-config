@@ -7,6 +7,7 @@
 {
   imports = [
     "${nhModules}/common"
+    ./packages.nix
   ];
 
   # Enable home-manager
