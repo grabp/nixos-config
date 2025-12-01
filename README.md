@@ -18,7 +18,7 @@
 ### Key Inputs
 
 - **nixpkgs**: Points to the `nixos-unstable` channel for access to the latest packages.
-- **nixpkgs-stable**: Points to the `nixos-25.05` channel for stable packages.
+- **nixpkgs-stable**: Points to the `nixos-25.11` channel for stable packages.
 - **home-manager**: Manages user-specific configurations.
 - **darwin**: Enables nix-darwin for macOS system configuration.
 - **hardware**: Provides NixOS modules to optimize settings for different hardware.
