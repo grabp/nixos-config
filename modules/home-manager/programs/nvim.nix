@@ -29,7 +29,7 @@
       # CSS
       stylelint
       # Docker
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       docker-compose-language-service
       # Astro
       astro-language-server
@@ -81,6 +81,7 @@
           nvim-treesitter
           nvim-treesitter-context
           nvim-treesitter-textobjects
+          nvim-treesitter-pairs
           nvim-ts-autotag
           nvim-ts-context-commentstring
           nvim-web-devicons
@@ -95,6 +96,7 @@
           vim-startuptime
           which-key-nvim
           copilot-lua
+          copilot-lsp
           {
             name = "LuaSnip";
             path = luasnip;
@@ -186,6 +188,12 @@
               yaml
               typescript
               toml
+              css
+              html
+              javascript
+              tsx
+              regex
+              bash
             ]
           )).dependencies;
       };

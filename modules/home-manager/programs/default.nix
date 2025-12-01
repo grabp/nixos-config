@@ -17,5 +17,6 @@
     ./lazygit.nix
     ./zellij.nix
     ./helix.nix
+    ./yazi.nix
   ];
 }
