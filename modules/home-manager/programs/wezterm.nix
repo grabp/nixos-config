@@ -1,4 +1,7 @@
 {
+  catppuccin.wezterm = {
+    enable = false;
+  };
   programs.wezterm = {
     enable = true;
     extraConfig = ''
@@ -41,7 +44,7 @@
       config.font_size = 14.0
 
       config.color_scheme = "Catppuccin Mocha" 
-      config.window_background_opacity = 0.6
+      config.window_background_opacity = 0.7
 
       return config
     '';
