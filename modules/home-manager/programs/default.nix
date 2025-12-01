@@ -16,6 +16,6 @@
     ./fastfetch.nix
     ./lazygit.nix
     ./zellij.nix
+    ./helix.nix
   ];
 }
-
