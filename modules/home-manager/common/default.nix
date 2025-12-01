@@ -74,8 +74,6 @@
       raycast
     ]
     ++ lib.optionals (!stdenv.isDarwin) [
-      nixd
-      nil
       unzip
       wl-clipboard
     ];

@@ -15,7 +15,7 @@
       ];
 
       xwayland = {
-	      force_zero_scaling = 1;
+        force_zero_scaling = 1;
       };
 
       env = [
@@ -27,6 +27,7 @@
         "GDK_DPI_SCALE,1.2"
         "GDK_SCALE,1.2"
         "XCURSOR_SIZE,24"
+        "GRIMBLAST_HIDE_CURSOR,0"
       ];
 
       debug = {
@@ -144,7 +145,7 @@
       ];
 
       workspace = [
-	      "1, monitor:HDMI-A-1"
+        "1, monitor:HDMI-A-1"
       ];
 
       bind = [
@@ -218,7 +219,7 @@
         ", XF86AudioLowerVolume, exec, pamixer -d 5 "
         ", XF86AudioMute, exec, pamixer -t"
         ", XF86AudioMicMute, exec, pamixer --default-source -t"
-        
+
         # Brightness control
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%- "
         ", XF86MonBrightnessUp, exec, brightnessctl set +5% "

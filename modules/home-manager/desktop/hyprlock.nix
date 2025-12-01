@@ -1,7 +1,7 @@
 {
   programs.hyprlock = {
     enable = true;
-    settings = {};
+    settings = { };
     sourceFirst = true;
 
     extraConfig = ''
@@ -15,7 +15,6 @@
       }
       background {
         monitor =
-        path = ~/.config/wallpapers/Cloudsnight.jpg
         blur_passes = 1
         color = $base
       }

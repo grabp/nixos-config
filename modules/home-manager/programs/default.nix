@@ -3,7 +3,6 @@
     ./zsh.nix
     ./nvim.nix
     ./git.nix
-    ./tmux.nix
     ./wezterm.nix
     ./starship.nix
     ./eza.nix
@@ -16,6 +15,7 @@
     ./jq.nix
     ./fastfetch.nix
     ./lazygit.nix
+    ./zellij.nix
   ];
 }
 
