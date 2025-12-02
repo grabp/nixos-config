@@ -6,12 +6,21 @@
       layout = {
         bar.layouts = {
           "0" = {
-            left = [ "dashboard" "workspaces" ];
+            left = [
+              "dashboard"
+              "workspaces"
+            ];
             middle = [ "media" ];
-            right = [ "volume" "systray" "notifications" ];
+            right = [
+              "volume"
+              "systray"
+              "notifications"
+            ];
           };
         };
       };
+
+      bar.workspaces.showWsIcons = true;
 
       bar.launcher.autoDetectIcon = true;
       bar.workspaces.show_icons = true;
@@ -36,4 +45,3 @@
     };
   };
 }
-

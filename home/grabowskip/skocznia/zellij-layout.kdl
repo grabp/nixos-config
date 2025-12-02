@@ -1,5 +1,38 @@
 layout {
-  // Templates
+  // =========================================
+  // Pane templates
+  // =========================================
+  pane_template name="nvim" {
+    command "nvim"
+    borderless true
+  }
+  pane_template name="nvim-python-env" {
+    command "zsh"
+    args "-ci" "source ./.venv/bin/activate && nvim"
+    borderless true
+  }
+  pane_template name="npm-start" {
+    command "npm"
+    args "start"
+  }
+  pane_template name="pnpm-dev" {
+    command "pnpm"
+    args "dev"
+  }
+  pane_template name="lazygit" {
+    command "lazygit"
+    args "-sm" "half"
+  }
+  pane_template name="docker-compose" {
+    command "docker-compose"
+  }
+  pane_template name="make-test" {
+    command "make"
+    args "test"
+  }
+  // =========================================
+  // Tab templates
+  // =========================================
   default_tab_template {
     pane size=1 borderless=true {
       plugin location="zellij:tab-bar"
@@ -11,15 +44,49 @@ layout {
       plugin location="zellij:status-bar"
     }
   }
+  tab_template name="project-view" {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    pane split_direction="vertical" {
+      pane split_direction="horizontal" {
+        nvim size="80%" {
+          focus true
+        }
 
+        pane split_direction="vertical" {
+          pane
+          pane
+        }
+      }
+      pane size="25%" split_direction="horizontal" {
+        lazygit
+        children
+      }
+    }
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
+  // =========================================
   // Tabs
+  // =========================================
+
+  // Dotfiles
   tab name="nixos-config (root) test" cwd="~/nixos-config" split_direction="vertical" {
     pane command="nvim" {
       focus true
     }
     pane size="25%" split_direction="horizontal" {
+      lazygit
       pane
       pane
     }
+  }
+
+  // Morozko 2.0
+  project-view name="Morozko 2.0" cwd="~/Projects/morozko2_0" {
+    pnpm-dev start_suspended=true name="Server"
   }
 }

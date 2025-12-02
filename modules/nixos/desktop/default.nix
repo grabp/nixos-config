@@ -25,7 +25,7 @@
   # Turn on pam security services for hyprlock
   security = {
     polkit.enable = true;
-    pam.services.hyprlock = {};
+    pam.services.hyprlock = { };
   };
 
   environment.variables = {

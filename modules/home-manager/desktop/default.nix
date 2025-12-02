@@ -8,5 +8,6 @@
     ./hyprpanel.nix
     ./obs-studio.nix
     ./hyprpaper.nix
+    ./thunderbird.nix
   ];
 }

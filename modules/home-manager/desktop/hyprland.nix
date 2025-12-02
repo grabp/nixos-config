@@ -116,9 +116,16 @@
         "float, center, pin, class:(.blueman-manager-wrapped)"
 
         "workspace 1 silent, title:(wezterm)"
-        "workspace 2 silent, class:(code)"
-        "workspace 9 silent, class:(WebCord)"
-        "workspace 0 silent, title:(Spotify Premium)"
+
+        "workspace 7 silent, class:(steam)"
+
+        "workspace 8 silent, class:(1password)"
+        "workspace 8 silent, class:(solaar)"
+
+        "workspace 9 silent, class:(discord)"
+        "workspace 9 silent, class:(thunderbird)"
+
+        "workspace 0 silent, class:(spotify)"
       ];
 
       exec-once = [
@@ -135,13 +142,12 @@
 
         # Autostart GUI apps
         "blueman-applet"
-        # "[workspace 1 silent] wezterm"
-        # "[workspace 2 silent] code"
-        # "[workspace 3 silent] brave"
-        # "[workspace 7 silent] 1password"
-        # "[workspace 8 silent] steam"
-        # "[workspace 9 silent] webcord"
-        # "[workspace 0 silent] spotify"
+        "solaar"
+        "thunderbird"
+        "wezterm"
+        "1password"
+        "steam"
+        "discord"
       ];
 
       workspace = [
