@@ -77,7 +77,7 @@
           nvim-lint
           nvim-lspconfig
           nvim-notify
-          nvim-spectre
+          # nvim-spectre
           nvim-treesitter
           nvim-treesitter-context
           nvim-treesitter-textobjects
@@ -97,6 +97,7 @@
           which-key-nvim
           copilot-lua
           copilot-lsp
+          venv-selector-nvim
           {
             name = "LuaSnip";
             path = luasnip;

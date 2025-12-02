@@ -79,7 +79,6 @@
       mermaid-cli
       ghostscript
       ast-grep
-      ueberzug
       gh
     ]
     ++ lib.optionals stdenv.isDarwin [
@@ -90,5 +89,6 @@
     ++ lib.optionals (!stdenv.isDarwin) [
       unzip
       wl-clipboard
+      ueberzug
     ];
 }
