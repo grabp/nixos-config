@@ -7,8 +7,7 @@
     ./mako.nix
     ./hyprpanel.nix
     ./obs-studio.nix
-
-    ../misc/wallpaper
+    ./hyprpaper.nix
+    ./thunderbird.nix
   ];
 }
-

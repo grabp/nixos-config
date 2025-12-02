@@ -74,6 +74,12 @@
       terraform
       redis
       postgresql_15
+      tree-sitter
+      imagemagick
+      mermaid-cli
+      ghostscript
+      ast-grep
+      gh
     ]
     ++ lib.optionals stdenv.isDarwin [
       # hidden-bar
@@ -83,5 +89,6 @@
     ++ lib.optionals (!stdenv.isDarwin) [
       unzip
       wl-clipboard
+      ueberzug
     ];
 }

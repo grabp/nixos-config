@@ -7,7 +7,7 @@
     enable = true;
     extraConfig =
       let
-        font-size = if pkgs.stdenv.isDarwin then "16.0" else "14.0";
+        font-size = if pkgs.stdenv.isDarwin then "32.0" else "14.0";
       in
       ''
         local wezterm = require('wezterm')

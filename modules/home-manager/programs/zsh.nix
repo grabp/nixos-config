@@ -97,10 +97,10 @@
         # OMZ deps
         "getantidote/use-omz"
         "ohmyzsh/ohmyzsh path:plugins/git"
-        # "ohmyzsh/ohmyzsh path:plugins/nvm"
         "ohmyzsh/ohmyzsh path:plugins/extract"
         "ohmyzsh/ohmyzsh path:plugins/command-not-found"
         "ohmyzsh/ohmyzsh path:plugins/sudo"
+        "ohmyzsh/ohmyzsh path:plugins/aws"
       ];
       useFriendlyNames = true;
     };

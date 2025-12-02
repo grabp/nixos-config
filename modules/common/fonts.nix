@@ -5,7 +5,7 @@
     packages = [
       jetbrains-mono
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       twemoji-color-font
       powerline-fonts
       powerline-symbols

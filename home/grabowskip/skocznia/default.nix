@@ -1,4 +1,4 @@
-{ nhModules, ... }:
+{ nhModules, config, ... }:
 {
   imports = [
     "${nhModules}/common"
@@ -9,7 +9,8 @@
   programs.home-manager.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
-  xdg.configFile."zellij/layouts/default.kdl".source = ./zellij-layout.kdl;
+  home.file.zellij-layout.source = config.lib.file.mkOutOfStoreSymlink ./zellij-layout.kdl;
+  home.file.zellij-layout.target = "./default.kdl";
 }

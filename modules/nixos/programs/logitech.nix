@@ -1,7 +1,8 @@
-{ pkgs, ... }: {
-  
+{ pkgs, ... }:
+{
+
   environment.systemPackages = with pkgs; [
     usbutils
   ];
-  services.solaar.enable = true;
+  # services.solaar.enable = true;
 }

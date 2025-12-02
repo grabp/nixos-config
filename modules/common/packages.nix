@@ -8,5 +8,6 @@
     ffmpeg
     starship
     prettierd
+    nodejs_22
   ];
 }
