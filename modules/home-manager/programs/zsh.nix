@@ -34,7 +34,7 @@
       {
         rb = (
           if pkgs.stdenv.isDarwin then
-            "sudo nix run nix-darwin -- switch --flake  ${flakeDir}#${hostname}"
+            "sudo nix run nix-darwin -- switch --flake ${flakeDir}#${hostname}"
           else
             "sudo nixos-rebuild switch --flake ${flakeDir}#${hostname}"
         );
