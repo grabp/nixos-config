@@ -23,9 +23,9 @@
       };
     };
 
-    # localVariables = {
-    #   ZSH_TMUX_AUTOSTART = true;
-    # };
+    localVariables = {
+      EDITOR = "nvim";
+    };
 
     shellAliases =
       let
@@ -101,6 +101,7 @@
         "ohmyzsh/ohmyzsh path:plugins/command-not-found"
         "ohmyzsh/ohmyzsh path:plugins/sudo"
         "ohmyzsh/ohmyzsh path:plugins/aws"
+        "ohmyzsh/ohmyzsh path:plugins/docker"
       ];
       useFriendlyNames = true;
     };

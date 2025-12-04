@@ -1,6 +1,7 @@
 {
   nhModules,
   config,
+  pkgs,
   ...
 }:
 {
@@ -19,4 +20,18 @@
   # xdg.configFile."zellij/layouts/main.kdl".source = ./zellij-layout.kdl;
   home.file.zellij-layout.source = config.lib.file.mkOutOfStoreSymlink ./zellij-layout.kdl;
   home.file.zellij-layout.target = "./default.kdl";
+
+  home.packages = with pkgs; [
+    kubectl
+  ];
+
+  programs.k9s = {
+    enable = true;
+
+    settings = {
+      ui = {
+        mouse = true;
+      };
+    };
+  };
 }
