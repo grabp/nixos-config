@@ -26,6 +26,7 @@
     screenkey
     gromit-mpx
     pavucontrol
+    bambu-studio
 
     # Wayland stuff
     xwayland
