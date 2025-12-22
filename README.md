@@ -24,7 +24,6 @@
 - **hardware**: Provides NixOS modules to optimize settings for different hardware.
 - **catppuccin**: Provides global Catppuccin theme integration.
 - **nix-flatpak**: Provides a declarative way to manage Flatpaks.
-- **plasma-manager**: A declarative manager for the KDE Plasma desktop environment.
 
 ## Usage
 
