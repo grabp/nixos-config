@@ -5,6 +5,9 @@
   ...
 }:
 {
+  # ===========================================
+  # Not used anymore. I'll remove it later
+  # ===========================================
   environment.systemPackages = [
     inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.star-citizen
   ];
