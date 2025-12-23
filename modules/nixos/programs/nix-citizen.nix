@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     inputs.nix-citizen.packages.${system}.rsi-launcher
+    inputs.nix-citizen.packages.${system}.lug-helper
   ];
 
   # See https://github.com/starcitizen-lug/knowledge-base/wiki/Manual-Installation#prerequisites
