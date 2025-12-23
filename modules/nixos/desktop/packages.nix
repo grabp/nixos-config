@@ -88,5 +88,8 @@
     libsForQt5.qt5ct
     hyprland-qt-support
     gamemode
+    unzip
+    cabextract
+    zenity
   ];
 }
