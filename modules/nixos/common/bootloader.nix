@@ -12,6 +12,9 @@
       };
     };
 
+    # Better kernel for wine/gaming. Source: https://github.com/fufexan/nix-gaming?tab=readme-ov-file#-tips
+    kernelPackages = pkgs.linuxPackages_xanmod_stable;
+
     # Initrd
     initrd.enable = true;
     initrd.verbose = false;
