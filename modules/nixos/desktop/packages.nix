@@ -26,6 +26,7 @@
     screenkey
     gromit-mpx
     pavucontrol
+    bambu-studio
 
     # Wayland stuff
     xwayland
@@ -43,8 +44,6 @@
     hyprutils
 
     brightnessctl
-    grim
-    grimblast
     libnotify
     networkmanagerapplet
     pamixer
@@ -53,6 +52,11 @@
     wf-recorder
     wlr-randr
     wlsunset
+
+    # Screenshot stuff
+    grim
+    grimblast
+    swappy
 
     # Waybar
     waybar
@@ -83,5 +87,9 @@
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     hyprland-qt-support
+    gamemode
+    unzip
+    cabextract
+    zenity
   ];
 }

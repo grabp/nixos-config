@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./audio.nix
     ./packages.nix
   ];
   # Enable GDM display manager
