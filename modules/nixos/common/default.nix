@@ -116,29 +116,11 @@
 
   services.displayManager.sddm.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  # services.desktopManager.plasma6.enable = true;
-
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
     NIXOS_OZONE_WL = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     WLR_NO_HARDWARE_CURSORS = "1";
-  };
-
-  # Enable PipeWire for sound
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-    pulse.enable = true;
-    wireplumber = {
-      enable = true;
-    };
   };
 
   # User configuration

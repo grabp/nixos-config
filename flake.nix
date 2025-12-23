@@ -18,6 +18,8 @@
 
     # https://nix.catppuccin.com/getting-started/flakes/
     catppuccin.url = "github:catppuccin/nix/release-25.05";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs =
