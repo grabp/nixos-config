@@ -5,9 +5,8 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.star-citizen
-    gamemode
   ];
 
   # See https://github.com/starcitizen-lug/knowledge-base/wiki/Manual-Installation#prerequisites

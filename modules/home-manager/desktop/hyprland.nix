@@ -129,9 +129,6 @@
       ];
 
       exec-once = [
-        # Bar
-        # "waybar"
-
         # Clipboard
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
@@ -148,6 +145,7 @@
         "1password"
         "steam"
         "discord"
+        "gamemoded"
       ];
 
       workspace = [
@@ -235,7 +233,10 @@
         ''$mainMod SHIFT, C, exec, alacritty -e sh -c "conf"''
         ''$mainMod SHIFT, H, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/hyprland.nix"''
         ''$mainMod SHIFT, W, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/waybar.nix''
+
+        # Screenshot
         '', Print, exec, grim -g "$(slurp)" - | swappy -f -''
+        ''$mainMod SHIFT, S, exec, grim -g "$(slurp)" - | swappy -f -''
 
         # Waybar
         "$mainMod, B, exec, pkill -SIGUSR1 waybar"
