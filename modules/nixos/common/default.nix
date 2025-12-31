@@ -106,6 +106,7 @@
     glib
     gnumake
     mesa
+    lsof
   ];
 
   # Set env variables
@@ -115,6 +116,7 @@
   };
 
   services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
 
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
@@ -129,6 +131,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "adbusers"
     ];
     isNormalUser = true;
     shell = pkgs.zsh;

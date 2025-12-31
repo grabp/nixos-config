@@ -18,6 +18,12 @@
     libreoffice-qt
     hunspell
     spotify
+    vlc
+    heroic
+
+    # Gaming
+    gamemode
+    gamescope
 
     # GUI utils
     feh
@@ -83,13 +89,28 @@
     wireplumber
     slurp
 
+    # Video stuff
+    gpac
+
     # Other
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     hyprland-qt-support
-    gamemode
     unzip
     cabextract
     zenity
+    p7zip
+    python313Packages.lxml
+    libxkbcommon
+
+    gtk3
+    gtk4
+    shared-mime-info
+
+    # Vulkan support
+    vulkan-tools
+    vulkan-loader
+    vulkan-headers
+    vulkan-helper
   ];
 }

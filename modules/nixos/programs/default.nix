@@ -5,5 +5,6 @@
     ./logitech.nix
     ./1password.nix
     ./nix-citizen.nix
+    ./vr.nix
   ];
 }

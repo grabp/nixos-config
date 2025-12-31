@@ -2,6 +2,7 @@
   inputs,
   hostname,
   nixosModules,
+  pkgs,
   ...
 }:
 {
@@ -18,6 +19,13 @@
 
   # Additional required graphics settings
   hardware.nvidia.open = true;
+
+  # Enable vulkan for 32-bit applications
+  hardware.graphics.enable32Bit = true;
+
+  # Optionally, specify Mesa package version if needed (newer versions for NVK driver)
+  hardware.opengl.package = pkgs.mesa.drivers;
+  hardware.opengl.enable = true;
 
   # Set hostname
   networking.hostName = hostname;

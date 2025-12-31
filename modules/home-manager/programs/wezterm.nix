@@ -22,7 +22,8 @@
         config.default_gui_startup_args = {'start', '--always-new-process'}
         config.enable_wayland = false
         config.enable_tab_bar = false
-        config.dpi = 196
+        config.dpi = 192
+        config.front_end = 'Software'
 
         -- Terminal Theme
 
