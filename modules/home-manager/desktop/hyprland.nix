@@ -11,7 +11,7 @@
       "$mainMod" = "SUPER";
 
       monitor = [
-        "HDMI-A-1,3440x1440@240,0x0,1"
+        "DP-1,3440x1440@240,0x0,1,bitdepth,10"
       ];
 
       xwayland = {
@@ -28,6 +28,7 @@
         "GDK_SCALE,1.2"
         "XCURSOR_SIZE,24"
         "GRIMBLAST_HIDE_CURSOR,0"
+        "QT_QPA_PLATFORMTHEME,qt6ct"
       ];
 
       debug = {
@@ -146,10 +147,12 @@
         "steam"
         "discord"
         "gamemoded"
+
+        "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
       ];
 
       workspace = [
-        "1, monitor:HDMI-A-1"
+        "1, monitor:DP-1"
       ];
 
       bind = [
