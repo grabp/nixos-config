@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   programs.tmux = {
-    enable = true;
+    enable = false;
 
     shortcut = "a";
     aggressiveResize = true;
@@ -27,7 +27,7 @@
           set -g @continuum-restore 'on'
           set -g @continuum-boot 'on'
           set -g @continuum-boot-options 'wezterm,fullscreen'
-        '';  
+        '';
       }
       tmuxPlugins.better-mouse-mode
       {

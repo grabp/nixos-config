@@ -106,6 +106,7 @@
     glib
     gnumake
     mesa
+    lsof
   ];
 
   # Set env variables
@@ -114,9 +115,8 @@
     EDITOR = "nvim";
   };
 
-  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
 
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
@@ -125,27 +125,13 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
-  # Enable PipeWire for sound
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-    pulse.enable = true;
-    wireplumber = {
-      enable = true;
-    };
-  };
-
   # User configuration
   users.users.${userConfig.name} = {
     description = userConfig.fullName;
     extraGroups = [
       "networkmanager"
       "wheel"
+      "adbusers"
     ];
     isNormalUser = true;
     shell = pkgs.zsh;

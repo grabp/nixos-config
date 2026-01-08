@@ -11,7 +11,7 @@
       "$mainMod" = "SUPER";
 
       monitor = [
-        "HDMI-A-1,3440x1440@240,0x0,1"
+        "DP-1,3440x1440@240,0x0,1,bitdepth,10"
       ];
 
       xwayland = {
@@ -28,6 +28,7 @@
         "GDK_SCALE,1.2"
         "XCURSOR_SIZE,24"
         "GRIMBLAST_HIDE_CURSOR,0"
+        "QT_QPA_PLATFORMTHEME,qt6ct"
       ];
 
       debug = {
@@ -129,9 +130,6 @@
       ];
 
       exec-once = [
-        # Bar
-        # "waybar"
-
         # Clipboard
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
@@ -148,10 +146,13 @@
         "1password"
         "steam"
         "discord"
+        "gamemoded"
+
+        "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
       ];
 
       workspace = [
-        "1, monitor:HDMI-A-1"
+        "1, monitor:DP-1"
       ];
 
       bind = [
@@ -235,7 +236,10 @@
         ''$mainMod SHIFT, C, exec, alacritty -e sh -c "conf"''
         ''$mainMod SHIFT, H, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/hyprland.nix"''
         ''$mainMod SHIFT, W, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/waybar.nix''
+
+        # Screenshot
         '', Print, exec, grim -g "$(slurp)" - | swappy -f -''
+        ''$mainMod SHIFT, S, exec, grim -g "$(slurp)" - | swappy -f -''
 
         # Waybar
         "$mainMod, B, exec, pkill -SIGUSR1 waybar"

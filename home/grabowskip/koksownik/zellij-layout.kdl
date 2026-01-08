@@ -73,8 +73,17 @@ layout {
   // Tabs
   // =========================================
 
+  // Playground 
+  tab name="Playground" cwd="~" split_direction="vertical" {
+    pane
+    pane size="35%" split_direction="horizontal" {
+      pane
+      pane
+    }
+  }
+
   // Dotfiles
-  tab name="nixos-config (root) test" cwd="~/nixos-config" split_direction="vertical" {
+  tab name="nixos-config (root)" cwd="~/nixos-config" split_direction="vertical" {
     pane command="nvim" {
       focus true
     }
@@ -88,5 +97,13 @@ layout {
   // Morozko 2.0
   project-view name="Morozko 2.0" cwd="~/Projects/morozko2_0" {
     pnpm-dev start_suspended=true name="Server"
+  }
+
+  // Resources
+  tab name="Resources" {
+    pane command="btop" {
+      focus true
+      borderless true
+    }
   }
 }

@@ -18,6 +18,12 @@
     libreoffice-qt
     hunspell
     spotify
+    vlc
+    heroic
+
+    # Gaming
+    gamemode
+    gamescope
 
     # GUI utils
     feh
@@ -26,6 +32,7 @@
     screenkey
     gromit-mpx
     pavucontrol
+    bambu-studio
 
     # Wayland stuff
     xwayland
@@ -43,8 +50,6 @@
     hyprutils
 
     brightnessctl
-    grim
-    grimblast
     libnotify
     networkmanagerapplet
     pamixer
@@ -53,6 +58,11 @@
     wf-recorder
     wlr-randr
     wlsunset
+
+    # Screenshot stuff
+    grim
+    grimblast
+    swappy
 
     # Waybar
     waybar
@@ -79,9 +89,28 @@
     wireplumber
     slurp
 
+    # Video stuff
+    gpac
+
     # Other
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     hyprland-qt-support
+    unzip
+    cabextract
+    zenity
+    p7zip
+    python313Packages.lxml
+    libxkbcommon
+
+    gtk3
+    gtk4
+    shared-mime-info
+
+    # Vulkan support
+    vulkan-tools
+    vulkan-loader
+    vulkan-headers
+    vulkan-helper
   ];
 }
