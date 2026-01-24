@@ -2,6 +2,7 @@
   description = "NixOS system configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
@@ -36,12 +37,12 @@
 
       # User configuration
       users = {
-        grabowskip = {
-          avatar = ./files/avatar/face;
-          email = "grabowskip@icloud.com";
-          fullName = "Patryk Grabowski";
-          name = "grabowskip";
-        };
+      grabowskip = {
+        avatar = ./files/avatar/face.jpg;
+        email = "grabowskip@icloud.com";
+        fullName = "Patryk Grabowski";
+        name = "grabowskip";
+      };
         "patryk.grabowski@iqvia.com" = {
           inherit (users.grabowskip)
             avatar
@@ -130,7 +131,5 @@
           mkDarwinHomeConfiguration "aarch64-darwin" "patryk.grabowski@iqvia.com"
             "ZTDMWCFP3J5YY";
       };
-
-      overlays = import ./overlays { inherit inputs; };
     };
 }

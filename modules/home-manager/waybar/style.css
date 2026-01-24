@@ -1,0 +1,195 @@
+/* Catppuccin Mocha Theme for Waybar */
+/* Colors: base #1e1e2e, surface0 #313244, text #cdd6f4, peach #fab387 (accent) */
+
+* {
+    border: none;
+    border-radius: 12px;
+    font-family: "Maple Mono NF", "Maple Mono NF Light", "Maple Mono NF Medium", "Maple Mono NF Bold", "Font Awesome 6 Free", sans-serif;
+    font-size: 16px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #cdd6f4;
+    transition: none;
+    border-radius: 0;
+}
+
+/* Workspaces */
+#workspaces,
+#hyprland-workspaces {
+    background-color: transparent;
+    margin: 4px 0;
+    padding: 0 4px;
+}
+
+#workspaces button,
+#hyprland-workspaces button {
+    padding: 6px 10px;
+    margin: 0 4px;
+    background-color: #313244;
+    color: #a6adc8;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    min-width: 28px;
+    min-height: 28px;
+}
+
+#workspaces button:hover,
+#hyprland-workspaces button:hover {
+    background-color: #45475a;
+    color: #cdd6f4;
+}
+
+#workspaces button.active,
+#hyprland-workspaces button.active {
+    background-color: #fab387;
+    color: #11111b;
+    font-weight: bold;
+}
+
+#workspaces button.urgent,
+#hyprland-workspaces button.urgent {
+    background-color: #f38ba8;
+    color: #11111b;
+}
+
+/* Modules - grouped styling with catppuccin colors */
+#custom-music,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#clock,
+#tray,
+#custom-notification,
+#custom-lock,
+#custom-power,
+#power-profiles-daemon,
+#disk,
+#custom-weather,
+#custom-disk-io,
+#custom-gpu-temp,
+#custom-cpu-temp {
+    padding: 6px 12px;
+    margin: 4px 2px;
+    background-color: #313244;
+    color: #cdd6f4;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Specific module accent colors */
+#cpu {
+    color: #89b4fa;
+}
+
+#memory {
+    color: #cba6f7;
+}
+
+#temperature {
+    color: #f38ba8;
+}
+
+#disk {
+    color: #89b4fa;
+}
+
+#custom-cpu-temp {
+    color: #f38ba8;
+}
+
+#custom-gpu-temp {
+    color: #f9e2af;
+}
+
+#custom-disk-io {
+    color: #74c7ec;
+}
+
+#custom-weather {
+    color: #a6e3a1;
+}
+
+#network {
+    color: #74c7ec;
+}
+
+#pulseaudio {
+    color: #a6e3a1;
+}
+
+#clock {
+    color: #fab387;
+    font-weight: 500;
+}
+
+#custom-music {
+    color: #f5c2e7;
+}
+
+#power-profiles-daemon {
+    color: #f9e2af;
+    padding: 6px 12px;
+}
+
+#custom-notification {
+    color: #cba6f7;
+}
+
+#custom-lock {
+    color: #b4befe;
+    padding: 6px 12px;
+    margin: 4px 2px;
+}
+
+#custom-power {
+    color: #f38ba8;
+    padding: 6px 12px;
+    margin: 4px 2px;
+}
+
+/* Hover effects */
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#network:hover,
+#pulseaudio:hover,
+#clock:hover,
+#custom-notification:hover,
+#custom-lock:hover,
+#custom-power:hover,
+#power-profiles-daemon:hover,
+#custom-music:hover,
+#disk:hover,
+#custom-weather:hover,
+#custom-disk-io:hover,
+#custom-gpu-temp:hover,
+#custom-cpu-temp:hover {
+    background-color: #45475a;
+    color: #cdd6f4;
+}
+
+/* Tray */
+#tray {
+    padding: 4px 12px;
+    margin-right: 4px;
+}
+
+/* Tooltip */
+tooltip {
+    background-color: #11111b;
+    border: 1px solid #313244;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: "Maple Mono NF", sans-serif;
+    font-size: 14px;
+    color: #cdd6f4;
+}
+
+tooltip label {
+    color: #cdd6f4;
+}

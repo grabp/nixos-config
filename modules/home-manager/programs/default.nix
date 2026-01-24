@@ -3,7 +3,7 @@
     ./zsh.nix
     ./nvim.nix
     ./git.nix
-    ./wezterm.nix
+    ./kitty.nix
     ./starship.nix
     ./eza.nix
     ./bat.nix

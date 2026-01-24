@@ -65,8 +65,8 @@
     settings = {
       General = {
         Experimental = true;
-        # This is the default
-        ControllerMode = "dual";
+        # Use "bredr" for AirPods Pro compatibility
+        ControllerMode = "bredr";
       };
     };
   };
@@ -111,7 +111,7 @@
 
   # Set env variables
   environment.variables = {
-    TERMINAL = "${pkgs.wezterm}/bin/wezterm";
+    TERMINAL = "${pkgs.kitty}/bin/kitty";
     EDITOR = "nvim";
   };
 
@@ -132,6 +132,7 @@
       "networkmanager"
       "wheel"
       "adbusers"
+      "bluetooth"  # Required for Bluetooth audio transport access
     ];
     isNormalUser = true;
     shell = pkgs.zsh;
