@@ -45,6 +45,8 @@
       taplo
       # Telescope
       ripgrep
+      # Systemd
+      systemd-lsp
     ];
 
     plugins = with pkgs.vimPlugins; [

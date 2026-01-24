@@ -32,7 +32,7 @@
     screenkey
     gromit-mpx
     pavucontrol
-    bambu-studio
+    code-cursor
 
     # Wayland stuff
     xwayland
@@ -102,6 +102,11 @@
     p7zip
     python313Packages.lxml
     libxkbcommon
+
+    nixos-generators
+    sops
+    age
+    just
 
     gtk3
     gtk4

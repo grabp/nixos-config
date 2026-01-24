@@ -26,6 +26,9 @@ return {
 				taplo = {},
 				tflint = {},
 				yamlls = {},
+				systemd_ls = {
+					filetypes = { "systemd", "container" },
+				},
 			},
 		},
 	},
