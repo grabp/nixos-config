@@ -297,9 +297,14 @@
       "custom/power" = {
         format  = " ⏻ ";
         tooltip = false;
-        on-click = "systemctl poweroff";
-        on-click-right = "systemctl reboot";
-        on-click-middle = "systemctl suspend";
+        menu = "on-click";
+        menu-file = "${config.xdg.configHome}/waybar/power_menu.xml";
+        menu-actions = {
+          shutdown = "systemctl poweroff";
+          reboot = "systemctl reboot";
+          suspend = "systemctl suspend";
+          hibernate = "systemctl hibernate";
+        };
       };
       "custom/notification" = {
         tooltip = false;
