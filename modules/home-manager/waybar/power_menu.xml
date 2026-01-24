@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<openbox_menu>
+  <item label="Shutdown">
+    <action name="Execute">
+      <command>systemctl poweroff</command>
+    </action>
+  </item>
+  <item label="Reboot">
+    <action name="Execute">
+      <command>systemctl reboot</command>
+    </action>
+  </item>
+  <item label="Suspend">
+    <action name="Execute">
+      <command>systemctl suspend</command>
+    </action>
+  </item>
+  <item label="Hibernate">
+    <action name="Execute">
+      <command>systemctl hibernate</command>
+    </action>
+  </item>
+</openbox_menu>
+
+

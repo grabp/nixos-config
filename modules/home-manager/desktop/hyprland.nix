@@ -138,6 +138,12 @@
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
+        # Waybar
+        "sleep 2 && waybar > /tmp/waybar.log 2>&1 &"
+
+        # Notification daemon
+        "mako"
+
         # Autostart GUI apps
         "blueman-applet"
         "solaar"
