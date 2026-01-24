@@ -10,7 +10,7 @@ return {
 			local dap = require("dap")
 			local dapui = require("dapui")
 
-			dap.defaults.fallback.terminal_launcher = { "wezterm", "-e" }
+			dap.defaults.fallback.terminal_launcher = { "kitty", "-e" }
 
 			-- OPTIMIZATION: Only open dapui for integrated consoles
 			dap.listeners.before.launch.dapui_config = function()

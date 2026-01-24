@@ -11,7 +11,6 @@
     discord
     gparted
     vscode
-    wezterm
     brave
     xfce.thunar
     xfce.xfce4-pulseaudio-plugin

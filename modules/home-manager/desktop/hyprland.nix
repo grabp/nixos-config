@@ -116,7 +116,7 @@
         "float, center, pin, class:(org.pulseaudio.pavucontrol)"
         "float, center, pin, class:(.blueman-manager-wrapped)"
 
-        "workspace 1 silent, title:(wezterm)"
+        "workspace 1 silent, class:(kitty)"
 
         "workspace 7 silent, class:(steam)"
 
@@ -142,7 +142,7 @@
         "blueman-applet"
         "solaar"
         "thunderbird"
-        "wezterm"
+        "kitty"
         "1password"
         "steam"
         "discord"
@@ -158,7 +158,7 @@
       bind = [
         "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
-        "$mainMod, Return, exec, wezterm"
+        "$mainMod, Return, exec, kitty"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, E, exec, thunar"

@@ -57,14 +57,14 @@
         format-icons = [
             "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"
         ];
-        on-click-right = "wezterm -e btop";
+        on-click-right = "kitty -e btop";
       };
       memory = {
         interval = 30;
         format = "  {}%";
         format-alt = "  {used:0.1f}G";
         max-length = 10;
-        on-click-right = "wezterm -e btop";
+        on-click-right = "kitty -e btop";
       };
       "custom/music" = {
         format = "  {}";

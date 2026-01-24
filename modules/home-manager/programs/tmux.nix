@@ -26,7 +26,7 @@
           # restore last saved environment (automatically)
           set -g @continuum-restore 'on'
           set -g @continuum-boot 'on'
-          set -g @continuum-boot-options 'wezterm,fullscreen'
+          set -g @continuum-boot-options 'kitty,fullscreen'
         '';
       }
       tmuxPlugins.better-mouse-mode

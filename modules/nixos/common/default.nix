@@ -111,7 +111,7 @@
 
   # Set env variables
   environment.variables = {
-    TERMINAL = "${pkgs.wezterm}/bin/wezterm";
+    TERMINAL = "${pkgs.kitty}/bin/kitty";
     EDITOR = "nvim";
   };
 
