@@ -1,11 +1,12 @@
+{ userConfig, ... }:
 {
   programs.git = {
     enable = true;
 
     settings = {
       user = {
-        name = "Patryk Grabowski";
-        email = "grabowskip@icloud.com";
+        name = userConfig.fullName;
+        email = userConfig.email;
       };
 
       blame = {
@@ -64,15 +65,15 @@
       diff = {
         context = 3;
         renames = "copies";
-        interHinkContext = 10;
+        interHunkContext = 10;
       };
 
       branch = {
-        sort = "-commiterdate";
+        sort = "-committerdate";
       };
 
       tag = {
-        sort = "-commiterdate";
+        sort = "-committerdate";
       };
 
       color.blame = {

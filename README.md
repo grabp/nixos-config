@@ -18,12 +18,10 @@
 ### Key Inputs
 
 - **nixpkgs**: Points to the `nixos-unstable` channel for access to the latest packages.
-- **nixpkgs-stable**: Points to the `nixos-25.11` channel for stable packages.
 - **home-manager**: Manages user-specific configurations.
 - **darwin**: Enables nix-darwin for macOS system configuration.
 - **hardware**: Provides NixOS modules to optimize settings for different hardware.
 - **catppuccin**: Provides global Catppuccin theme integration.
-- **nix-flatpak**: Provides a declarative way to manage Flatpaks.
 
 ## Usage
 
@@ -39,7 +37,7 @@ To add a new machine with a new user to your NixOS or nix-darwin configuration, 
    users = {
      # Existing users...
      newuser = {
-       avatar = ./files/avatar/face;
+       avatar = ./files/avatar/face.jpg;
        email = "newuser@example.com";
        fullName = "New User";
        name = "newuser";
