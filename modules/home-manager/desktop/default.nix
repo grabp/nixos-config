@@ -9,6 +9,7 @@
     ./obs-studio.nix
     ./hyprpaper.nix
     ./thunderbird.nix
+    ./wireplumber.nix
   ];
 
   dconf = {

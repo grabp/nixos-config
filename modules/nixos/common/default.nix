@@ -65,8 +65,8 @@
     settings = {
       General = {
         Experimental = true;
-        # This is the default
-        ControllerMode = "dual";
+        # Use "bredr" for AirPods Pro compatibility
+        ControllerMode = "bredr";
       };
     };
   };
@@ -132,6 +132,7 @@
       "networkmanager"
       "wheel"
       "adbusers"
+      "bluetooth"  # Required for Bluetooth audio transport access
     ];
     isNormalUser = true;
     shell = pkgs.zsh;
