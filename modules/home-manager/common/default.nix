@@ -76,6 +76,8 @@
       ghostscript
       ast-grep
       gh
+      opencode
+      bun
     ]
     ++ lib.optionals stdenv.isDarwin [
       # hidden-bar

@@ -133,6 +133,7 @@
             name = "mini.surround";
             path = mini-nvim;
           }
+          opencode-nvim
         ];
         mkEntryFromDrv =
           drv:
