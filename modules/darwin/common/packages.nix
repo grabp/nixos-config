@@ -8,5 +8,6 @@
     hidden-bar
     raycast
     stats
+    _1password-gui
   ];
 }

@@ -102,11 +102,6 @@
     python313Packages.lxml
     libxkbcommon
 
-    nixos-generators
-    sops
-    age
-    just
-
     gtk3
     gtk4
     shared-mime-info
