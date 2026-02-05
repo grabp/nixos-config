@@ -9,5 +9,10 @@
     starship
     prettierd
     nodejs_22
+
+    nixos-generators
+    sops
+    age
+    just
   ];
 }
