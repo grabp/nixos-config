@@ -125,6 +125,7 @@
 
         "workspace 9 silent, class:(discord)"
         "workspace 9 silent, class:(thunderbird)"
+        "workspace 9 silent, class:(signal)"
 
         "workspace 0 silent, class:(spotify)"
       ];
@@ -153,6 +154,7 @@
         "steam"
         "discord"
         "gamemoded"
+        "signal"
 
         "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
       ];

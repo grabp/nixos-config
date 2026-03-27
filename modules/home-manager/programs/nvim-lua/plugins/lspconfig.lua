@@ -29,6 +29,7 @@ return {
 				systemd_ls = {
 					filetypes = { "systemd", "container" },
 				},
+				terraformls = {},
 			},
 		},
 	},
