@@ -30,6 +30,13 @@ layout {
     command "make"
     args "test"
   }
+  pane_template name="just-watch" {
+    command "watch"
+    args "-n" "2" "-c" "just"
+  }
+  pane_template name="ssh-session" {
+    command "ssh"
+  }
   // =========================================
   // Tab templates
   // =========================================
@@ -98,6 +105,53 @@ layout {
   project-view name="Morozko 2.0" cwd="~/Projects/morozko2_0" {
     pnpm-dev start_suspended=true name="Server"
   }
+
+  // Lab Config
+  project-view name="Home Lab Config" cwd="~/Projects/home-lab" {
+    pane
+    pane
+  }
+
+  // Lab Connections
+  // tab name="Lab Connections" cwd="~/Projects/lab" split_direction="vertical" {
+  //   pane size="50%" split_direction="horizontal" {
+  //     pane name="nginx-1" {
+  //       command "just"
+  //       args "ssh-container" "nginx-1"
+  //       start_suspended true
+  //     }
+  //   }
+  //   pane size="50%" split_direction="horizontal" {
+  //     pane name="pihole-1" {
+  //       command "just"
+  //       args "ssh-container" "pihole-1"
+  //       start_suspended true
+  //     }
+  //     pane name="Commands"
+  //   }
+  // }
+
+  // Dashboard
+  // tab name="Dashboard" cwd="~/Projects/home-lab" split_direction="vertical" {
+  //   pane size="60%" {
+  //     command "btop"
+  //     borderless true
+  //   }
+    // pane size="40%" split_direction="horizontal" {
+    //   pane name="Lab Health" {
+    //     command "watch"
+    //     args "-n" "2" "-c" "just health-all"
+    //   }
+    //   pane name="Systems" {
+    //     command "watch"
+    //     args "-n" "5" "-c" "just list"
+    //   }
+    //   pane name="Network" {
+    //     command "watch"
+    //     args "-n" "2" "-c" "ss -s"
+    //   }
+    // }
+  // }
 
   // Resources
   tab name="Resources" {

@@ -47,6 +47,8 @@
       ripgrep
       # Systemd
       systemd-lsp
+      # Terraform
+      terraform-ls
     ];
 
     plugins = with pkgs.vimPlugins; [

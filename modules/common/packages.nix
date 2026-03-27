@@ -14,5 +14,6 @@
     sops
     age
     just
+    go
   ];
 }

@@ -1,4 +1,9 @@
-{ nhModules, config, ... }:
+{
+  nhModules,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     "${nhModules}/common"
