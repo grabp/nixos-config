@@ -9,9 +9,11 @@ set -uo pipefail
 YK1_SERIAL="36316131"
 YK2_SERIAL="32483037"
 
-# Current shared subkeys (post Option-A migration, both cards carry these)
+# Current shared subkeys (both cards carry these)
+SHARED_S_FP="365684FE6C1496D1517CE32BE7BF4CD07ECA63F7"
 SHARED_E_FP="AF9D2ABCA60A863DB21E548A95CBAE324B1AB319"
 SHARED_A_FP="F660540384F9621617E94443961414ED7FF5C32B"
+SIGN_KEYGRIP="71E5121B437D65195181C8AA36E18D1D39473362"
 AUTH_KEYGRIP="648967E7D2D51663B5F38FDE09AA07CC2CB00A67"
 EXPECTED_SSH_PUBKEY="AAAAC3NzaC1lZDI1NTE5AAAAIBfJboJOYiM9gm7iYoSLZZ8FBjH6WcbdRqk0WMTWqBes"
 RECIPIENT="grabowskip@icloud.com"
@@ -62,10 +64,15 @@ SIG_KEY=$(echo "$CARD_STATUS" | awk '/^Signature key/{print $3}')
 ENC_KEY=$(echo "$CARD_STATUS" | awk '/^Encryption key/{print $3}')
 AUTH_KEY=$(echo "$CARD_STATUS" | awk '/^Authentication key/{print $3}')
 
-if [ "$SIG_KEY" != "[none]" ] && [ -n "$SIG_KEY" ]; then
-  pass "Signature slot populated"
-else
+# Strip spaces from card FPs for comparison
+SIG_KEY_COMPACT=$(echo "$CARD_STATUS" | awk '/^Signature key/{$1=$2=""; print $0}' | tr -d ' ')
+
+if [ "$SIG_KEY" = "[none]" ] || [ -z "$SIG_KEY" ]; then
   fail "Signature slot is empty"
+elif echo "$SHARED_S_FP" | grep -qi "${SIG_KEY_COMPACT: -8}"; then
+  pass "Signature slot populated with expected key (...${SHARED_S_FP: -8})"
+else
+  fail "Signature slot has unexpected key: $SIG_KEY_COMPACT (expected FP: $SHARED_S_FP)"
 fi
 if [ "$ENC_KEY" != "[none]" ] && [ -n "$ENC_KEY" ]; then
   pass "Encryption slot populated"

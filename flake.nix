@@ -42,7 +42,7 @@
           email = "grabowskip@icloud.com";
           fullName = "Patryk Grabowski";
           name = "grabowskip";
-          signingKey = null; # no [S] subkey on card
+          signingKey = "E7BF4CD07ECA63F7!"; # [S] subkey on card; ! forces use of this specific subkey
         };
         "patryk.grabowski@iqvia.com" = {
           inherit (users.grabowskip)
