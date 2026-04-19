@@ -1,9 +1,12 @@
-{ userConfig, ... }:
+{ lib, userConfig, ... }:
+let
+  hasSigningKey = userConfig ? signingKey && userConfig.signingKey != null;
+in
 {
   programs.git = {
     enable = true;
 
-    settings = {
+    settings = lib.recursiveUpdate {
       user = {
         name = userConfig.fullName;
         email = userConfig.email;
@@ -102,7 +105,12 @@
         tag = "yellow";
         remoteBranch = "magenta";
       };
-    };
+    } (lib.optionalAttrs hasSigningKey {
+      user.signingKey = userConfig.signingKey;
+      commit.gpgSign = true;
+      tag.gpgSign = true;
+      gpg.program = "gpg";
+    });
 
     ignores = [
       "**/.envrc"

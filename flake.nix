@@ -37,12 +37,13 @@
 
       # User configuration
       users = {
-      grabowskip = {
-        avatar = ./files/avatar/face.jpg;
-        email = "grabowskip@icloud.com";
-        fullName = "Patryk Grabowski";
-        name = "grabowskip";
-      };
+        grabowskip = {
+          avatar = ./files/avatar/face.jpg;
+          email = "grabowskip@icloud.com";
+          fullName = "Patryk Grabowski";
+          name = "grabowskip";
+          signingKey = null; # no [S] subkey on card
+        };
         "patryk.grabowski@iqvia.com" = {
           inherit (users.grabowskip)
             avatar
@@ -50,6 +51,7 @@
             ;
           email = "patryk.grabowski@iqvia.com";
           name = "patryk.grabowski@iqvia.com";
+          signingKey = null;
         };
       };
 
@@ -116,7 +118,6 @@
     in
     {
       nixosConfigurations = {
-        skocznia = mkNixosConfiguration "skocznia" "grabowskip";
         koksownik = mkNixosConfiguration "koksownik" "grabowskip";
       };
 
@@ -125,7 +126,6 @@
       };
 
       homeConfigurations = {
-        "grabowskip@skocznia" = mkHomeConfiguration "x86_64-linux" "grabowskip" "skocznia";
         "grabowskip@koksownik" = mkHomeConfiguration "x86_64-linux" "grabowskip" "koksownik";
         "patryk.grabowski@iqvia.com@ZTDMWCFP3J5YY" =
           mkDarwinHomeConfiguration "aarch64-darwin" "patryk.grabowski@iqvia.com"

@@ -18,5 +18,7 @@
     ./zellij.nix
     ./helix.nix
     ./yazi.nix
+    ./gpg.nix
+    ./yubikey-scripts.nix
   ];
 }

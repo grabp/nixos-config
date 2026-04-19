@@ -21,6 +21,7 @@
     heroic
     cider-2
     signal-desktop
+    claude-code
 
     # Gaming
     gamemode
@@ -103,6 +104,7 @@
     p7zip
     python313Packages.lxml
     libxkbcommon
+    flashrom
 
     gtk3
     gtk4
