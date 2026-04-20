@@ -34,6 +34,11 @@
     '';
   };
 
+  # Tell gpg-agent's systemd unit to start after the graphical session
+  systemd.user.services.gpg-agent = lib.mkIf (!pkgs.stdenv.isDarwin) {
+    Service.Environment = "WAYLAND_DISPLAY=wayland-1";
+  };
+
   # macOS: manage agent config via home.file (no systemd)
   home.file.".gnupg/gpg-agent.conf" = lib.mkIf pkgs.stdenv.isDarwin {
     text = ''
