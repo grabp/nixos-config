@@ -167,6 +167,8 @@
 
             eval "$(fnm env --use-on-cd --shell zsh)"
     '';
-    profileExtra = "";
+    profileExtra = ''
+      eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+    '';
   };
 }
