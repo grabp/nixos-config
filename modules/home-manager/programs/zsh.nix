@@ -166,9 +166,15 @@
             fast-theme XDG:catppuccin-mocha > /dev/null
 
             eval "$(fnm env --use-on-cd --shell zsh)"
+
+            ${if pkgs.stdenv.isDarwin then ''
+              eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+            '' else ''
+            ''}
     '';
-    profileExtra = ''
+    profileExtra = if pkgs.stdenv.isDarwin then ''
       eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+    '' else ''
     '';
   };
 }
