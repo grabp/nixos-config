@@ -118,6 +118,11 @@
             export PATH="$HOME/.rd/bin:$PATH"
     '';
     initContent = ''
+            # GPG agent SSH support
+            export GPG_TTY=$(tty)
+            export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+            gpgconf --launch gpg-agent 2>/dev/null || true
+
             # Darwin doesn't use envExtra for some reason, so we duplicate it here
             export FZF_DEFAULT_OPTS=" \
       --color=bg+:#313244,bg:-1,spinner:#F5E0DC,hl:#F38BA8 \
@@ -161,7 +166,15 @@
             fast-theme XDG:catppuccin-mocha > /dev/null
 
             eval "$(fnm env --use-on-cd --shell zsh)"
+
+            ${if pkgs.stdenv.isDarwin then ''
+              eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+            '' else ''
+            ''}
     '';
-    profileExtra = '''';
+    profileExtra = if pkgs.stdenv.isDarwin then ''
+      eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+    '' else ''
+    '';
   };
 }

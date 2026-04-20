@@ -8,6 +8,7 @@
   imports = [
     ./fonts.nix
     ./packages.nix
+    ./yubikey.nix
   ];
 
   # Nixpkgs configuration

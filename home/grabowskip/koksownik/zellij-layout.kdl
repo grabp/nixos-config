@@ -37,6 +37,10 @@ layout {
   pane_template name="ssh-session" {
     command "ssh"
   }
+  pane_template name="claude" {
+    command "claude"
+    args "--model" "claude-sonnet-4-6"
+  }
   // =========================================
   // Tab templates
   // =========================================
@@ -76,6 +80,30 @@ layout {
     }
   }
 
+  tab_template name="project-view-with-claude" {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    pane split_direction="vertical" {
+      pane split_direction="horizontal" {
+        nvim size="80%" {
+          focus true
+        }
+
+        pane split_direction="vertical" {
+          pane
+          pane
+        }
+      }
+      pane size="45%" split_direction="horizontal" {
+        claude
+      }
+    }
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
   // =========================================
   // Tabs
   // =========================================
@@ -107,51 +135,7 @@ layout {
   }
 
   // Lab Config
-  project-view name="Home Lab Config" cwd="~/Projects/home-lab" {
-    pane
-    pane
-  }
-
-  // Lab Connections
-  // tab name="Lab Connections" cwd="~/Projects/lab" split_direction="vertical" {
-  //   pane size="50%" split_direction="horizontal" {
-  //     pane name="nginx-1" {
-  //       command "just"
-  //       args "ssh-container" "nginx-1"
-  //       start_suspended true
-  //     }
-  //   }
-  //   pane size="50%" split_direction="horizontal" {
-  //     pane name="pihole-1" {
-  //       command "just"
-  //       args "ssh-container" "pihole-1"
-  //       start_suspended true
-  //     }
-  //     pane name="Commands"
-  //   }
-  // }
-
-  // Dashboard
-  // tab name="Dashboard" cwd="~/Projects/home-lab" split_direction="vertical" {
-  //   pane size="60%" {
-  //     command "btop"
-  //     borderless true
-  //   }
-    // pane size="40%" split_direction="horizontal" {
-    //   pane name="Lab Health" {
-    //     command "watch"
-    //     args "-n" "2" "-c" "just health-all"
-    //   }
-    //   pane name="Systems" {
-    //     command "watch"
-    //     args "-n" "5" "-c" "just list"
-    //   }
-    //   pane name="Network" {
-    //     command "watch"
-    //     args "-n" "2" "-c" "ss -s"
-    //   }
-    // }
-  // }
+  project-view-with-claude name="Home Lab Config" cwd="~/Projects/lab"
 
   // Resources
   tab name="Resources" {
