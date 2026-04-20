@@ -118,6 +118,11 @@
             export PATH="$HOME/.rd/bin:$PATH"
     '';
     initContent = ''
+            # GPG TTY — needed for pinentry in terminal contexts
+            export GPG_TTY=$(tty)
+            export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+            gpgconf --launch gpg-agent 2>/dev/null || true
+
             # GPG agent SSH support
             export GPG_TTY=$(tty)
             export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -167,14 +172,21 @@
 
             eval "$(fnm env --use-on-cd --shell zsh)"
 
-            ${if pkgs.stdenv.isDarwin then ''
-              eval "$(/opt/homebrew/bin/brew shellenv zsh)"
-            '' else ''
-            ''}
+            ${
+              if pkgs.stdenv.isDarwin then
+                ''
+                  eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+                ''
+              else
+                ""
+            }
     '';
-    profileExtra = if pkgs.stdenv.isDarwin then ''
-      eval "$(/opt/homebrew/bin/brew shellenv zsh)"
-    '' else ''
-    '';
+    profileExtra =
+      if pkgs.stdenv.isDarwin then
+        ''
+          eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+        ''
+      else
+        "";
   };
 }
