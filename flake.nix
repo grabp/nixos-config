@@ -53,6 +53,13 @@
           name = "patryk.grabowski@iqvia.com";
           signingKey = null;
         };
+        patrykgrabowski = {
+          avatar = ./files/avatar/face.jpg;
+          email = "grabowskip@icloud.com";
+          fullName = "Patryk Grabowski";
+          name = "patrykgrabowski";
+          signingKey = "E7BF4CD07ECA63F7!"; # [S] subkey on card; ! forces use of this specific subkey
+        };
       };
 
       # Function for NixOS system configuration
@@ -123,6 +130,7 @@
 
       darwinConfigurations = {
         ZTDMWCFP3J5YY = mkDarwinConfiguration "ZTDMWCFP3J5YY" "patryk.grabowski@iqvia.com";
+        dmuchawa = mkDarwinConfiguration "dmuchawa" "patrykgrabowski";
       };
 
       homeConfigurations = {
@@ -130,6 +138,8 @@
         "patryk.grabowski@iqvia.com@ZTDMWCFP3J5YY" =
           mkDarwinHomeConfiguration "aarch64-darwin" "patryk.grabowski@iqvia.com"
             "ZTDMWCFP3J5YY";
+        "patrykgrabowski@dmuchawa" = mkDarwinHomeConfiguration "aarch64-darwin" "patrykgrabowski"
+            "dmuchawa";
       };
     };
 }
