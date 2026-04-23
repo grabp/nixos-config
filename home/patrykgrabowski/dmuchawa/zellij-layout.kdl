@@ -1,0 +1,147 @@
+layout {
+  // =========================================
+  // Pane templates
+  // =========================================
+  pane_template name="nvim" {
+    command "nvim"
+    borderless true
+  }
+  pane_template name="nvim-python-env" {
+    command "zsh"
+    args "-ci" "source ./.venv/bin/activate && nvim"
+    borderless true
+  }
+  pane_template name="npm-start" {
+    command "npm"
+    args "start"
+  }
+  pane_template name="pnpm-dev" {
+    command "pnpm"
+    args "dev"
+  }
+  pane_template name="lazygit" {
+    command "lazygit"
+    args "-sm" "half"
+  }
+  pane_template name="docker-compose" {
+    command "docker-compose"
+  }
+  pane_template name="make-test" {
+    command "make"
+    args "test"
+  }
+  pane_template name="just-watch" {
+    command "watch"
+    args "-n" "2" "-c" "just"
+  }
+  pane_template name="ssh-session" {
+    command "ssh"
+  }
+  pane_template name="claude" {
+    command "claude"
+    args "--model" "claude-sonnet-4-6"
+  }
+  // =========================================
+  // Tab templates
+  // =========================================
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    pane split_direction="Vertical" {
+      children
+    }
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+  tab_template name="project-view" {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    pane split_direction="vertical" {
+      pane split_direction="horizontal" {
+        nvim size="80%" {
+          focus true
+        }
+
+        pane split_direction="vertical" {
+          pane
+          pane
+        }
+      }
+      pane size="25%" split_direction="horizontal" {
+        lazygit
+        children
+      }
+    }
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
+  tab_template name="project-view-with-claude" {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    pane split_direction="vertical" {
+      pane split_direction="horizontal" {
+        nvim size="80%" {
+          focus true
+        }
+
+        pane split_direction="vertical" {
+          pane
+          pane
+        }
+      }
+      pane size="45%" split_direction="horizontal" {
+        claude
+      }
+    }
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
+  // =========================================
+  // Tabs
+  // =========================================
+
+  // Playground 
+  tab name="Playground" cwd="~" split_direction="vertical" {
+    pane
+    pane size="35%" split_direction="horizontal" {
+      pane
+      pane
+    }
+  }
+
+  // Dotfiles
+  tab name="nixos-config (root)" cwd="~/nixos-config" split_direction="vertical" {
+    pane command="nvim" {
+      focus true
+    }
+    pane size="25%" split_direction="horizontal" {
+      lazygit
+      pane
+      pane
+    }
+  }
+
+  // Morozko 2.0
+  project-view name="Morozko 2.0" cwd="~/Projects/morozko2_0" {
+    pnpm-dev start_suspended=true name="Server"
+  }
+
+  // Lab Config
+  project-view-with-claude name="Home Lab Config" cwd="~/Projects/lab"
+
+  // Resources
+  tab name="Resources" {
+    pane command="btop" {
+      focus true
+      borderless true
+    }
+  }
+}
