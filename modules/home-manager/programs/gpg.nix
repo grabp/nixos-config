@@ -1,8 +1,12 @@
 { lib, pkgs, ... }:
 {
-  home.packages = with pkgs;
-    [ gnupg yubikey-manager ]
-    ++ lib.optionals (!pkgs.stdenv.isDarwin) [ pinentry-curses ];
+  home.packages =
+    with pkgs;
+    [
+      gnupg
+      yubikey-manager
+    ]
+    ++ lib.optionals (!pkgs.stdenv.isDarwin) [ pinentry-qt ];
 
   programs.gpg = {
     enable = true;
@@ -12,7 +16,7 @@
       use-agent = true;
       trust-model = "tofu+pgp";
     };
-    publicKeys = [];
+    publicKeys = [ ];
   };
 
   # Linux: gpg-agent managed by systemd
@@ -21,7 +25,9 @@
     enableSshSupport = true;
     defaultCacheTtl = 600;
     maxCacheTtl = 7200;
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentry = {
+      package = pkgs.pinentry-qt;
+    };
     sshKeys = [ "648967E7D2D51663B5F38FDE09AA07CC2CB00A67" ];
     extraConfig = ''
       allow-loopback-pinentry

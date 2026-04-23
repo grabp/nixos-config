@@ -71,7 +71,6 @@ layout {
         }
       }
       pane size="25%" split_direction="horizontal" {
-        lazygit
         children
       }
     }
@@ -123,7 +122,6 @@ layout {
       focus true
     }
     pane size="25%" split_direction="horizontal" {
-      lazygit
       pane
       pane
     }
