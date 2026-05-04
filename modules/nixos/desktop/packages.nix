@@ -19,9 +19,8 @@
     spotify
     vlc
     heroic
-    cider-2
+    # cider-2
     signal-desktop
-    claude-code
 
     # Gaming
     gamemode

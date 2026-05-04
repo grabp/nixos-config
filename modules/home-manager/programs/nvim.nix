@@ -100,8 +100,6 @@
           vim-illuminate
           vim-startuptime
           which-key-nvim
-          copilot-lua
-          copilot-lsp
           venv-selector-nvim
           {
             name = "LuaSnip";

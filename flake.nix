@@ -3,6 +3,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
@@ -124,6 +125,9 @@
         };
     in
     {
+      # Overlays
+      overlays = import ./overlays { inherit inputs; };
+
       nixosConfigurations = {
         koksownik = mkNixosConfiguration "koksownik" "grabowskip";
       };

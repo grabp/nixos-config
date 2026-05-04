@@ -25,6 +25,10 @@
     config = {
       allowUnfree = true;
     };
+    overlays = [
+      outputs.overlays.stable-packages
+      outputs.overlays.unstable-packages
+    ];
   };
 
   # Nicely reload system units when changing configs
@@ -76,8 +80,9 @@
       ghostscript
       ast-grep
       gh
-      opencode
+      unstable.opencode
       bun
+      unstable.claude-code
     ]
     ++ lib.optionals stdenv.isDarwin [
       # hidden-bar
