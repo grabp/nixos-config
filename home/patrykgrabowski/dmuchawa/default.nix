@@ -10,7 +10,8 @@
     "${nhModules}/darwin"
   ];
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  # stateVersion: set to the NixOS release this machine was FIRST installed with.
+  # Do NOT change this on upgrades. See: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.11";
 
   # xdg.configFile."zellij/layouts/main.kdl".source = ./zellij-layout.kdl;
