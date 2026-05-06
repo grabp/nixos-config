@@ -19,7 +19,7 @@
     hardware.url = "github:nixos/nixos-hardware";
 
     # https://nix.catppuccin.com/getting-started/flakes/
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
 
     nix-citizen.url = "github:LovingMelody/nix-citizen";
   };

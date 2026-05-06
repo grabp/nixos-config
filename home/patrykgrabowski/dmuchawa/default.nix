@@ -20,8 +20,5 @@
   home.file.zellij-layout.source = config.lib.file.mkOutOfStoreSymlink ./zellij-layout.kdl;
   home.file.zellij-layout.target = "./default.kdl";
 
-  home.packages = with pkgs; [
-    claude-code
-    opencode
-  ];
+  home.packages = with pkgs; [ ];
 }
