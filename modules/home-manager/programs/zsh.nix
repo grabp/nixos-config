@@ -38,8 +38,6 @@
           else
             "sudo nixos-rebuild switch --flake ${flakeDir}#${hostname}"
         );
-        rbb = "sudo nixos-rebuild --install-bootloader boot --flake ${flakeDir}#${hostname}";
-
         upd = "nix flake update --flake ${flakeDir}";
         upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}#${hostname}";
 

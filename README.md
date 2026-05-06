@@ -17,7 +17,7 @@
 
 ### Key Inputs
 
-- **nixpkgs**: Points to the `nixos-unstable` channel for access to the latest packages.
+- **nixpkgs**: Points to the `nixos-25.11` channel.
 - **home-manager**: Manages user-specific configurations.
 - **darwin**: Enables nix-darwin for macOS system configuration.
 - **hardware**: Provides NixOS modules to optimize settings for different hardware.
@@ -62,15 +62,6 @@ To add a new machine with a new user to your NixOS or nix-darwin configuration, 
    darwinConfigurations = {
      # Existing configurations...
      newmachine = mkDarwinConfiguration "newmachine" "newuser";
-   };
-   ```
-
-   c. Add the new home configuration:
-
-   ```nix
-   homeConfigurations = {
-     # Existing configurations...
-     "newuser@newmachine" = mkHomeConfiguration "x86_64-linux" "newuser" "newmachine";
    };
    ```
 
@@ -145,15 +136,15 @@ To add a new machine with a new user to your NixOS or nix-darwin configuration, 
    }
    ```
 
-4. **Building and Applying Configurations**:
+4. **Build and apply**:
 
-   a. Commit new files to git:
+   Commit new files to git first:
 
    ```sh
    git add .
    ```
 
-   b. Build and switch to the new system configuration:
+   Then rebuild (the `rb` alias does this, or run directly):
 
    For NixOS:
 
@@ -161,23 +152,13 @@ To add a new machine with a new user to your NixOS or nix-darwin configuration, 
    sudo nixos-rebuild switch --flake .#newmachine
    ```
 
-   For nix-darwin (requires Nix and nix-darwin installation first):
+   For nix-darwin:
 
    ```sh
    darwin-rebuild switch --flake .#newmachine
    ```
 
-   c. Build and switch to the new Home Manager configuration:
-
-> [!IMPORTANT]
-> On fresh systems, bootstrap Home Manager first:
-
-```sh
-nix-shell -p home-manager
-home-manager switch --flake .#newuser@newmachine
-```
-
-After this initial setup, you can rebuild configurations separately and home-manager will be available without additional steps
+   Home Manager is integrated into the system rebuild — a single `rb` applies both system and home configuration. No separate `home-manager switch` step is needed.
 
 ## Secret Management (sops-nix)
 
