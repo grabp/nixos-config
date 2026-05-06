@@ -1,5 +1,10 @@
 # Main NixOS configuration file
-{ pkgs, userConfig, ... }:
+{
+  pkgs,
+  userConfig,
+  outputs,
+  ...
+}:
 
 {
   imports = [
@@ -92,8 +97,13 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      outputs.overlays.stable-packages
+      outputs.overlays.unstable-packages
+    ];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
