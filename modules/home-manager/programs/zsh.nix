@@ -32,7 +32,7 @@
 
         ls = "eza --icons";
         ll = "eza -lah --icons";
-        tree = "eza -lah --tree --icons --level=3 --ignore-glob='node_modules|.git|.DS_Store|.nvm|.turbo'";
+        tree = "eza -lah --tree --icons --level 3 --ignore-glob 'node_modules|.git|.DS_Store|.nvm|.turbo'";
 
         cat = "bat --paging=never";
         less = "bat";
