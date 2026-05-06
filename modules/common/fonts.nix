@@ -3,7 +3,6 @@
 {
   fonts = with pkgs; {
     packages = [
-      jetbrains-mono
       noto-fonts
       noto-fonts-color-emoji
       twemoji-color-font
