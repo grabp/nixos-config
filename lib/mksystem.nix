@@ -10,6 +10,7 @@ let
     nix-darwin
     home-manager
     catppuccin
+    sops-nix
     ;
 in
 {
@@ -26,6 +27,7 @@ in
       };
       modules = [
         catppuccin.nixosModules.catppuccin
+        sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -41,6 +43,7 @@ in
           home-manager.users.${user.name} = import (self + /home/${username}/${hostname});
           home-manager.sharedModules = [
             catppuccin.homeModules.catppuccin
+            sops-nix.homeManagerModules.sops
           ];
         }
         (self + /hosts/${hostname})
@@ -60,6 +63,7 @@ in
         darwinModules = self + /modules/darwin;
       };
       modules = [
+        sops-nix.darwinModules.sops
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -75,6 +79,7 @@ in
           home-manager.users.${user.name} = import (self + /home/${username}/${hostname});
           home-manager.sharedModules = [
             catppuccin.homeModules.catppuccin
+            sops-nix.homeManagerModules.sops
           ];
         }
         (self + /hosts/${hostname})

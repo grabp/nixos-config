@@ -1,0 +1,18 @@
+keys:
+  - &main-pgp 6C4D33083EDEF83D043C897BD4ADECA93F52036C
+  - &koksownik age1lxhl5pej6ujweeajdvmspcvuusjs93fhfrau3ym7tzr8ercvvslsmw2vuk
+
+creation_rules:
+  - path_regex: ^secrets/koksownik\.yaml$
+    key_groups:
+      - age:
+          - *koksownik
+        pgp:
+          - *main-pgp
+
+  - path_regex: ^secrets/common\.yaml$
+    key_groups:
+      - age:
+          - *koksownik
+        pgp:
+          - *main-pgp

@@ -179,6 +179,61 @@ home-manager switch --flake .#newuser@newmachine
 
 After this initial setup, you can rebuild configurations separately and home-manager will be available without additional steps
 
+## Secret Management (sops-nix)
+
+Secrets (e.g. SMB credentials) are managed with [sops-nix](https://github.com/Mic92/sops-nix). Each machine decrypts secrets using an age key at `/var/lib/sops-nix/keys.txt`.
+
+### One-time setup on a new machine
+
+**1. Generate an age key:**
+
+```sh
+sudo mkdir -p /var/lib/sops-nix
+nix-shell -p age --run "age-keygen -o /tmp/age-key.txt"
+# Output will print the public key — record it for step 3
+sudo mv /tmp/age-key.txt /var/lib/sops-nix/keys.txt
+sudo chmod 600 /var/lib/sops-nix/keys.txt
+```
+
+**2. Add the public key to `.sops.yaml`:**
+
+```yaml
+keys:
+  - &newmachine age1...   # paste public key from step 1 here
+
+creation_rules:
+  - path_regex: ^secrets/newmachine\.yaml$
+    key_groups:
+      - age:
+          - *newmachine
+        pgp:
+          - *main-pgp
+```
+
+**3. Re-encrypt or create the secrets file:**
+
+To add the new key to an existing secrets file:
+```sh
+sops updatekeys secrets/koksownik.yaml
+```
+
+To create a new secrets file for a new machine:
+```sh
+sops secrets/newmachine.yaml
+```
+
+**4. Rebuild** to deploy the secrets:
+
+```sh
+sudo nixos-rebuild switch --flake .#newmachine
+```
+
+### Editing secrets
+
+```sh
+sops secrets/koksownik.yaml
+```
+
 ## Updating Flakes
 
 To update all flake inputs to their latest versions:
