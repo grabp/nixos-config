@@ -8,21 +8,7 @@
 {
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting = {
-      enable = true;
-      highlighters = [
-        "main"
-        "brackets"
-        "pattern"
-      ];
-      styles = {
-        "single-hyphen-option" = "fg=magenta,bold";
-        "double-hyphen-option" = "fg=yellow";
-      };
-    };
-
+    enableCompletion = false;
     localVariables = {
       EDITOR = "nvim";
     };
@@ -46,7 +32,7 @@
 
         ls = "eza --icons";
         ll = "eza -lah --icons";
-        tree = "eza -lah --tree --icons --level = 3 --ignore-glob = 'node_modules|.git|.DS_Store|.nvm|.turbo'";
+        tree = "eza -lah --tree --icons --level=3 --ignore-glob='node_modules|.git|.DS_Store|.nvm|.turbo'";
 
         cat = "bat --paging=never";
         less = "bat";
@@ -158,9 +144,17 @@
             }
 
             # Fast Syntax Highlighting Colors
-            fast-theme XDG:catppuccin-mocha > /dev/null
+            [[ -f "${config.xdg.cacheHome}/fast-syntax-highlighting/current_theme.zsh" ]] || \
+              fast-theme XDG:catppuccin-mocha > /dev/null
 
-            eval "$(fnm env --use-on-cd --shell zsh)"
+            _fnm_load() {
+              unfunction _fnm_load node npm npx fnm 2>/dev/null
+              eval "$(command fnm env --use-on-cd --shell zsh)"
+            }
+            fnm()  { _fnm_load; fnm  "$@"; }
+            node() { _fnm_load; node "$@"; }
+            npm()  { _fnm_load; npm  "$@"; }
+            npx()  { _fnm_load; npx  "$@"; }
 
             ${
               if pkgs.stdenv.isDarwin then
