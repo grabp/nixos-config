@@ -82,6 +82,7 @@
           nvim-lint
           nvim-lspconfig
           nvim-notify
+          markdown-preview-nvim
           # nvim-spectre
           nvim-treesitter
           nvim-treesitter-context
