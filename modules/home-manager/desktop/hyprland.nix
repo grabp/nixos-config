@@ -1,4 +1,4 @@
-{ home, ... }:
+{ home, lib, ... }:
 
 {
   programs.kitty.enable = true;
@@ -10,9 +10,7 @@
       "$mod" = "SUPER";
       "$mainMod" = "SUPER";
 
-      monitor = [
-        "DP-1,3440x1440@240,0x0,1,bitdepth,10"
-      ];
+      monitor = lib.mkDefault [ ];
 
       xwayland = {
         force_zero_scaling = 1;
