@@ -34,7 +34,7 @@
       {
         rb = (
           if pkgs.stdenv.isDarwin then
-            "sudo nix run nix-darwin -- switch --flake ${flakeDir}#${hostname}"
+            "darwin-rebuild switch --flake ${flakeDir}#${hostname}"
           else
             "sudo nixos-rebuild switch --flake ${flakeDir}#${hostname}"
         );
@@ -45,9 +45,6 @@
 
         # Zellij
         zd = "zellij --layout ~/default.kdl";
-
-        # Home-manager
-        hms = "home-manager switch --flake ${flakeDir}";
 
         ls = "eza --icons";
         ll = "eza -lah --icons";

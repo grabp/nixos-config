@@ -22,6 +22,11 @@
     catppuccin.url = "github:catppuccin/nix/release-25.11";
 
     nix-citizen.url = "github:LovingMelody/nix-citizen";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -31,12 +36,12 @@
       nix-darwin,
       home-manager,
       catppuccin,
+      sops-nix,
       ...
     }@inputs:
     let
       inherit (self) outputs;
 
-      # User configuration
       users = {
         grabowskip = {
           avatar = ./files/avatar/face.jpg;
@@ -45,13 +50,10 @@
           name = "grabowskip";
           signingKey = "E7BF4CD07ECA63F7!"; # [S] subkey on card; ! forces use of this specific subkey
         };
-        "patryk.grabowski@iqvia.com" = {
-          inherit (users.grabowskip)
-            avatar
-            fullName
-            ;
+        work = {
+          inherit (users.grabowskip) avatar fullName;
           email = "patryk.grabowski@iqvia.com";
-          name = "patryk.grabowski@iqvia.com";
+          name = "patryk.grabowski@iqvia.com"; # OS username stays the same
           signingKey = null;
         };
         patrykgrabowski = {
@@ -63,69 +65,17 @@
         };
       };
 
-      # Function for NixOS system configuration
-      mkNixosConfiguration =
-        hostname: username:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs hostname;
-            userConfig = users.${username};
-            nixosModules = "${self}/modules/nixos";
-          };
-          modules = [
-            catppuccin.nixosModules.catppuccin
-            ./hosts/${hostname}
-          ];
-        };
-      # Function for nix-darwin system configuration
-      mkDarwinConfiguration =
-        hostname: username:
-        nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = {
-            inherit inputs outputs hostname;
-            userConfig = users.${username};
-            darwinModules = "${self}/modules/darwin";
-          };
-          modules = [
-            ./hosts/${hostname}
-          ];
-        };
-
-      # Function for Home Manager configuration (linux)
-      mkHomeConfiguration =
-        system: username: hostname:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
-          extraSpecialArgs = {
-            inherit inputs outputs hostname;
-            userConfig = users.${username};
-            nhModules = "${self}/modules/home-manager";
-          };
-          modules = [
-            ./home/${username}/${hostname}
-            catppuccin.homeModules.catppuccin
-          ];
-        };
-
-      # Function for Home Manager configuration (linux)
-      mkDarwinHomeConfiguration =
-        system: username: hostname:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
-          extraSpecialArgs = {
-            inherit inputs outputs hostname;
-            userConfig = users.${username};
-            nhModules = "${self}/modules/home-manager";
-          };
-          modules = [
-            ./home/${username}/${hostname}
-            catppuccin.homeModules.catppuccin
-          ];
-        };
+      helpers = import ./lib/mksystem.nix {
+        inherit
+          self
+          inputs
+          outputs
+          users
+          ;
+      };
+      inherit (helpers) mkNixosConfiguration mkDarwinConfiguration;
     in
     {
-      # Overlays
       overlays = import ./overlays { inherit inputs; };
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
@@ -135,18 +85,10 @@
       };
 
       darwinConfigurations = {
-        ZTDMWCFP3J5YY = mkDarwinConfiguration "ZTDMWCFP3J5YY" "patryk.grabowski@iqvia.com";
+        iqvia-mbp = mkDarwinConfiguration "iqvia-mbp" "work";
         dmuchawa = mkDarwinConfiguration "dmuchawa" "patrykgrabowski";
       };
 
-      homeConfigurations = {
-        "grabowskip@koksownik" = mkHomeConfiguration "x86_64-linux" "grabowskip" "koksownik";
-        "patryk.grabowski@iqvia.com@ZTDMWCFP3J5YY" =
-          mkDarwinHomeConfiguration "aarch64-darwin" "patryk.grabowski@iqvia.com"
-            "ZTDMWCFP3J5YY";
-        "patrykgrabowski@dmuchawa" =
-          mkDarwinHomeConfiguration "aarch64-darwin" "patrykgrabowski"
-            "dmuchawa";
-      };
+      # homeConfigurations removed — HM is integrated into system configs
     };
 }

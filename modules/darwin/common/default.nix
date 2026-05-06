@@ -12,11 +12,12 @@
     ./yubikey.nix
   ];
 
-  # Nixpkgs configuration
   nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
+    config.allowUnfree = true;
+    overlays = [
+      outputs.overlays.stable-packages
+      outputs.overlays.unstable-packages
+    ];
   };
 
   # Nix settings
