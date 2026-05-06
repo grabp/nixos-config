@@ -2,6 +2,7 @@
   nhModules,
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -24,4 +25,8 @@
 
   home.file.zellij-layout.source = config.lib.file.mkOutOfStoreSymlink ./zellij-layout.kdl;
   home.file.zellij-layout.target = "./default.kdl";
+
+  home.activation.warmZshCompletions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    $DRY_RUN_CMD ${pkgs.zsh}/bin/zsh -i -c exit 2>/dev/null || true
+  '';
 }
