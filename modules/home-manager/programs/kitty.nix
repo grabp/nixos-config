@@ -1,4 +1,12 @@
 { pkgs, ... }:
+let
+  # On Darwin, kitty is installed via Homebrew (properly Apple-signed).
+  # Use a stub so home-manager still generates the config without also
+  # installing the unsigned Nix binary.
+  kittyPkg = if pkgs.stdenv.isDarwin
+    then pkgs.runCommand "kitty-stub" { } "mkdir -p $out"
+    else pkgs.kitty;
+in
 {
   catppuccin.kitty = {
     enable = true;
@@ -7,6 +15,7 @@
 
   programs.kitty = {
     enable = true;
+    package = kittyPkg;
 
     settings = {
       # Font configuration with fallbacks
@@ -16,18 +25,18 @@
       bold_italic_font = "Maple Mono NF Bold";
       font_size = "12.0";
 
-      # Font features - disable ligatures
-      font_features = "Maple Mono NF Light +calt=0 +clig=0 +liga=0";
+      # Disable ligatures globally (avoids PostScript name parsing issues)
+      disable_ligatures = "always";
 
-      # Fallback fonts
-      symbol_map = "U+1F300-U+1F9FF Noto Color Emoji";
+      # Fallback fonts - use Apple Color Emoji (always present on macOS)
+      symbol_map = "U+1F300-U+1F9FF Apple Color Emoji";
 
       # Appearance
       background_opacity = "0.8";
       hide_window_decorations = "no";
 
       # Tab bar - hidden (matching wezterm)
-      hide_tab_bar = true;
+      tab_bar_style = "hidden";
 
       # Wayland support
       wayland_titlebar_color = "background";

@@ -7,6 +7,7 @@
 {
   imports = [
     ./fonts.nix
+    ./homebrew.nix
     ./packages.nix
     ./yubikey.nix
   ];
@@ -219,6 +220,8 @@
   #   };
   #   primaryUser = "${userConfig.name}";
   # };
+
+  system.primaryUser = userConfig.name;
 
   # Zsh configuration
   programs.zsh.enable = true;
