@@ -14,5 +14,8 @@
     casks = [
       "kitty"
     ];
+    brews = [
+      "pinentry-mac"
+    ];
   };
 }
