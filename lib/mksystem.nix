@@ -15,10 +15,13 @@ in
 {
   mkNixosConfiguration =
     hostname: username:
+    let
+      user = users.${username};
+    in
     nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs outputs hostname;
-        userConfig = users.${username};
+        userConfig = user;
         nixosModules = self + /modules/nixos;
       };
       modules = [
@@ -30,10 +33,12 @@ in
           home-manager.backupFileExtension = "hm-backup";
           home-manager.extraSpecialArgs = {
             inherit inputs outputs hostname;
-            userConfig = users.${username};
+            userConfig = user;
             nhModules = self + /modules/home-manager;
           };
-          home-manager.users.${username} = import (self + /home/${username}/${hostname});
+          # Use the OS username as the HM attribute key so nix-darwin/nixos can
+          # infer homeDirectory from the system user entry.
+          home-manager.users.${user.name} = import (self + /home/${username}/${hostname});
           home-manager.sharedModules = [
             catppuccin.homeModules.catppuccin
           ];
@@ -44,11 +49,14 @@ in
 
   mkDarwinConfiguration =
     hostname: username:
+    let
+      user = users.${username};
+    in
     nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       specialArgs = {
         inherit inputs outputs hostname;
-        userConfig = users.${username};
+        userConfig = user;
         darwinModules = self + /modules/darwin;
       };
       modules = [
@@ -59,10 +67,12 @@ in
           home-manager.backupFileExtension = "hm-backup";
           home-manager.extraSpecialArgs = {
             inherit inputs outputs hostname;
-            userConfig = users.${username};
+            userConfig = user;
             nhModules = self + /modules/home-manager;
           };
-          home-manager.users.${username} = import (self + /home/${username}/${hostname});
+          # Use the OS username as the HM attribute key so nix-darwin/nixos can
+          # infer homeDirectory from the system user entry.
+          home-manager.users.${user.name} = import (self + /home/${username}/${hostname});
           home-manager.sharedModules = [
             catppuccin.homeModules.catppuccin
           ];
