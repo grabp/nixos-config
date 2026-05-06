@@ -1,9 +1,10 @@
 {
   programs.starship = {
     enable = true;
+    enableZshIntegration = false;
     settings = {
       add_newline = true;
-      command_timeout = 3000;
+      command_timeout = 500;
 
       character = {
         success_symbol = "[[󰄛](teal) ❯](peach)";
