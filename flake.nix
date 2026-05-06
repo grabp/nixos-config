@@ -128,6 +128,8 @@
       # Overlays
       overlays = import ./overlays { inherit inputs; };
 
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+
       nixosConfigurations = {
         koksownik = mkNixosConfiguration "koksownik" "grabowskip";
       };
@@ -142,7 +144,8 @@
         "patryk.grabowski@iqvia.com@ZTDMWCFP3J5YY" =
           mkDarwinHomeConfiguration "aarch64-darwin" "patryk.grabowski@iqvia.com"
             "ZTDMWCFP3J5YY";
-        "patrykgrabowski@dmuchawa" = mkDarwinHomeConfiguration "aarch64-darwin" "patrykgrabowski"
+        "patrykgrabowski@dmuchawa" =
+          mkDarwinHomeConfiguration "aarch64-darwin" "patrykgrabowski"
             "dmuchawa";
       };
     };

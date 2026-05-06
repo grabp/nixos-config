@@ -2,7 +2,7 @@
 {
   # Configure WirePlumber for proper Bluetooth A2DP support
   # This fixes low audio volume issues with AirPods Pro
-  
+
   # WirePlumber 0.5.x configuration format
   # Remove old bluetooth.lua.d config and use wireplumber.conf.d instead
   xdg.configFile."wireplumber/wireplumber.conf.d/50-bluez-config.conf".text = ''
@@ -14,4 +14,3 @@
     }
   '';
 }
-

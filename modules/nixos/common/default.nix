@@ -133,7 +133,7 @@
       "networkmanager"
       "wheel"
       "adbusers"
-      "bluetooth"  # Required for Bluetooth audio transport access
+      "bluetooth" # Required for Bluetooth audio transport access
     ];
     isNormalUser = true;
     shell = pkgs.zsh;

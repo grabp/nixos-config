@@ -6,111 +6,116 @@ in
   programs.git = {
     enable = true;
 
-    settings = lib.recursiveUpdate {
-      user = {
-        name = userConfig.fullName;
-        email = userConfig.email;
-      };
+    settings =
+      lib.recursiveUpdate
+        {
+          user = {
+            name = userConfig.fullName;
+            email = userConfig.email;
+          };
 
-      blame = {
-        coloring = "highlightRecent";
-        date = "relative";
-      };
+          blame = {
+            coloring = "highlightRecent";
+            date = "relative";
+          };
 
-      log = {
-        abbrevCommit = true;
-        graphColors = "blue,yellow,cyan,magenta,green,red";
-      };
+          log = {
+            abbrevCommit = true;
+            graphColors = "blue,yellow,cyan,magenta,green,red";
+          };
 
-      pull = {
-        rebase = true;
-        default = "current";
-      };
+          pull = {
+            rebase = true;
+            default = "current";
+          };
 
-      push = {
-        autoSetupRemote = true;
-        default = "current";
-        followTags = true;
-      };
+          push = {
+            autoSetupRemote = true;
+            default = "current";
+            followTags = true;
+          };
 
-      rebase = {
-        autoStash = true;
-        missingCommitsCheck = true;
-      };
+          rebase = {
+            autoStash = true;
+            missingCommitsCheck = true;
+          };
 
-      core = {
-        compression = 9;
-        fsync = "none";
-        whitespace = "error";
-        preloadindex = true;
-      };
+          core = {
+            compression = 9;
+            fsync = "none";
+            whitespace = "error";
+            preloadindex = true;
+          };
 
-      commit = {
-        verbose = true;
-      };
+          commit = {
+            verbose = true;
+          };
 
-      advice = {
-        addEmptyPathspec = false;
-        pushNonFastForward = false;
-        statusHints = false;
-      };
+          advice = {
+            addEmptyPathspec = false;
+            pushNonFastForward = false;
+            statusHints = false;
+          };
 
-      init = {
-        defaultBranch = "main";
-      };
+          init = {
+            defaultBranch = "main";
+          };
 
-      status = {
-        branch = true;
-        showStash = true;
-        showUntrackedFiles = "all";
-      };
+          status = {
+            branch = true;
+            showStash = true;
+            showUntrackedFiles = "all";
+          };
 
-      diff = {
-        context = 3;
-        renames = "copies";
-        interHunkContext = 10;
-      };
+          diff = {
+            context = 3;
+            renames = "copies";
+            interHunkContext = 10;
+          };
 
-      branch = {
-        sort = "-committerdate";
-      };
+          branch = {
+            sort = "-committerdate";
+          };
 
-      tag = {
-        sort = "-committerdate";
-      };
+          tag = {
+            sort = "-committerdate";
+          };
 
-      color.blame = {
-        highlightRecent = "black bold,1 year ago,white,1 month ago,default,7 days ago,blue";
-      };
+          color.blame = {
+            highlightRecent = "black bold,1 year ago,white,1 month ago,default,7 days ago,blue";
+          };
 
-      color.branch = {
-        current = "magenta";
-        local = "default";
-        remote = "yellow";
-        upstream = "green";
-        plain = "blue";
-      };
+          color.branch = {
+            current = "magenta";
+            local = "default";
+            remote = "yellow";
+            upstream = "green";
+            plain = "blue";
+          };
 
-      color.diff = {
-        meta = "black bold";
-        frag = "magenta";
-        context = "white";
-        whitespace = "yellow reverse";
-        old = "red";
-      };
+          color.diff = {
+            meta = "black bold";
+            frag = "magenta";
+            context = "white";
+            whitespace = "yellow reverse";
+            old = "red";
+          };
 
-      color.decorate = {
-        HEAD = "red";
-        branch = "blue";
-        tag = "yellow";
-        remoteBranch = "magenta";
-      };
-    } (lib.optionalAttrs hasSigningKey {
-      user.signingKey = userConfig.signingKey;
-      commit.gpgSign = true;
-      tag.gpgSign = true;
-      gpg.program = "gpg";
-    });
+          color.decorate = {
+            HEAD = "red";
+            branch = "blue";
+            tag = "yellow";
+            remoteBranch = "magenta";
+          };
+        }
+        (
+          lib.optionalAttrs hasSigningKey {
+            user.signingKey = userConfig.signingKey;
+            commit.gpgSign = true;
+            tag.gpgSign = true;
+            gpg.program = "gpg";
+          }
+        );
 
     ignores = [
       "**/.envrc"

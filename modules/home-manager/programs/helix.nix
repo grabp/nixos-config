@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     vscode-langservers-extracted
     yaml-language-server
@@ -63,7 +64,7 @@
         }
         {
           name = "typst";
-          language-servers = ["tinymist"];
+          language-servers = [ "tinymist" ];
         }
         {
           name = "python";

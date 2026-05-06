@@ -3,9 +3,8 @@ let
   # On Darwin, kitty is installed via Homebrew (properly Apple-signed).
   # Use a stub so home-manager still generates the config without also
   # installing the unsigned Nix binary.
-  kittyPkg = if pkgs.stdenv.isDarwin
-    then pkgs.runCommand "kitty-stub" { } "mkdir -p $out"
-    else pkgs.kitty;
+  kittyPkg =
+    if pkgs.stdenv.isDarwin then pkgs.runCommand "kitty-stub" { } "mkdir -p $out" else pkgs.kitty;
 in
 {
   catppuccin.kitty = {

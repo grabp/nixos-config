@@ -167,14 +167,21 @@
 
             eval "$(fnm env --use-on-cd --shell zsh)"
 
-            ${if pkgs.stdenv.isDarwin then ''
-              eval "$(/opt/homebrew/bin/brew shellenv zsh)"
-            '' else ''
-            ''}
+            ${
+              if pkgs.stdenv.isDarwin then
+                ''
+                  eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+                ''
+              else
+                ""
+            }
     '';
-    profileExtra = if pkgs.stdenv.isDarwin then ''
-      eval "$(/opt/homebrew/bin/brew shellenv zsh)"
-    '' else ''
-    '';
+    profileExtra =
+      if pkgs.stdenv.isDarwin then
+        ''
+          eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+        ''
+      else
+        "";
   };
 }

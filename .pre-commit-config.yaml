@@ -1,0 +1,14 @@
+repos:
+  - repo: local
+    hooks:
+      - id: nixfmt
+        name: Format Nix files
+        entry: nix fmt --
+        language: system
+        files: \.nix$
+      - id: gitleaks
+        name: Detect hardcoded secrets
+        description: Scan staged changes for secrets using gitleaks
+        entry: nix run nixpkgs#gitleaks -- protect --staged --redact --verbose
+        language: system
+        pass_filenames: false
