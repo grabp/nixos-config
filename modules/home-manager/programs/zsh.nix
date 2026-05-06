@@ -34,7 +34,7 @@
       {
         rb = (
           if pkgs.stdenv.isDarwin then
-            "darwin-rebuild switch --flake ${flakeDir}#${hostname}"
+            "sudo darwin-rebuild switch --flake ${flakeDir}#${hostname}"
           else
             "sudo nixos-rebuild switch --flake ${flakeDir}#${hostname}"
         );

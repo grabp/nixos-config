@@ -88,7 +88,5 @@
         iqvia-mbp = mkDarwinConfiguration "iqvia-mbp" "work";
         dmuchawa = mkDarwinConfiguration "dmuchawa" "patrykgrabowski";
       };
-
-      # homeConfigurations removed — HM is integrated into system configs
     };
 }
