@@ -101,8 +101,7 @@
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
-      outputs.overlays.stable-packages
-      outputs.overlays.unstable-packages
+      outputs.overlays.extra-channels
     ];
   };
 
