@@ -16,6 +16,9 @@
         style = "bold muave";
       };
 
+      gcloud.disabled = true;
+      aws.disabled = true;
+
       directory = {
         truncation_length = 4;
         style = "bold lavender";
