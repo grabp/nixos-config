@@ -84,12 +84,14 @@ in
         "mattmc3/ez-compinit"
         "zsh-users/zsh-completions"
 
+        # Synchronous — calls compinit internally, must run with ez-compinit in scope
+        "Aloxaf/fzf-tab"
+
         # Defer engine — must precede any kind:defer plugin
         "romkatv/zsh-defer"
 
-        # Deferred — load after first prompt
+        # Deferred — ZLE-only, safe to load after first prompt
         "zsh-users/zsh-autosuggestions kind:defer"
-        "Aloxaf/fzf-tab kind:defer"
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
         "so-fancy/diff-so-fancy kind:defer"
 
