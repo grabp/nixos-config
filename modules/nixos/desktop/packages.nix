@@ -33,7 +33,6 @@
     screenkey
     gromit-mpx
     pavucontrol
-    code-cursor
 
     # Wayland stuff
     xwayland

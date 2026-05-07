@@ -8,7 +8,6 @@
   imports = [
     "${nhModules}/common"
     "${nhModules}/darwin"
-    ./packages.nix
   ];
 
   # stateVersion: set to the NixOS release this machine was FIRST installed with.
@@ -21,6 +20,10 @@
 
   home.packages = with pkgs; [
     kubectl
+    awscli
+    saml2aws
+    unstable.cursor-cli
+    unstable.code-cursor
   ];
 
   programs.k9s = {
