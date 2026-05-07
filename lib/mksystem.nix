@@ -11,6 +11,7 @@ let
     home-manager
     catppuccin
     sops-nix
+    nix-flatpak
     ;
 in
 {
@@ -28,6 +29,7 @@ in
       modules = [
         catppuccin.nixosModules.catppuccin
         sops-nix.nixosModules.sops
+        nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

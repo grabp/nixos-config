@@ -67,4 +67,11 @@
   services.open-webui = {
     enable = true;
   };
+
+  services.flatpak.packages = [
+    {
+      appId = "com.bambulab.BambuStudio";
+      origin = "flathub";
+    }
+  ];
 }
