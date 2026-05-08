@@ -13,7 +13,6 @@ let
     '';
   zshInits = {
     zoxide = mkZshInit "zoxide" "${pkgs.zoxide}/bin/zoxide init zsh";
-    starship = mkZshInit "starship" "${pkgs.starship}/bin/starship init zsh";
     direnv = mkZshInit "direnv" "${pkgs.direnv}/bin/direnv hook zsh";
     fzf = mkZshInit "fzf" "${pkgs.fzf}/bin/fzf --zsh";
   };
@@ -95,6 +94,9 @@ in
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
         "so-fancy/diff-so-fancy kind:defer"
 
+        # Catppuccin Powerlevel10k theme (reads zstyle set in envExtra)
+        "tolkonepiu/catppuccin-powerlevel10k-themes"
+
         # OMZ deps (synchronous — aliases needed immediately)
         "getantidote/use-omz"
         "ohmyzsh/ohmyzsh path:plugins/git"
@@ -119,6 +121,12 @@ in
             export PATH="$HOME/.rd/bin:$PATH"
     '';
     initContent = ''
+            # Enable Powerlevel10k instant prompt — must come before anything that writes to stdout
+            [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]] && \
+              source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+
+            POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
             # GPG agent SSH support
             export GPG_TTY=$(tty)
             export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -155,7 +163,7 @@ in
 
             # FSH theme — deferred so FSH is loaded first
             [[ -f "${config.xdg.cacheHome}/fast-syntax-highlighting/current_theme.zsh" ]] || \
-              zsh-defer fast-theme XDG:catppuccin-mocha
+              (( ''${+functions[zsh-defer]} )) && zsh-defer fast-theme XDG:catppuccin-mocha
 
             _fnm_load() {
               unfunction _fnm_load node npm npx fnm 2>/dev/null
@@ -168,9 +176,11 @@ in
 
             # Pre-generated init scripts — sourced from nix store, no subprocess at shell start
             source ${zshInits.zoxide}
-            source ${zshInits.starship}
             source ${zshInits.direnv}
             source ${zshInits.fzf}
+
+            source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+            [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
             ${
               if pkgs.stdenv.isDarwin then
@@ -189,4 +199,7 @@ in
       else
         "";
   };
+
+  home.packages = [ pkgs.zsh-powerlevel10k ];
+  home.file.".p10k.zsh".source = ./.p10k.zsh;
 }
