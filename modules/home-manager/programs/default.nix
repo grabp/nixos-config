@@ -4,7 +4,6 @@
     ./nvim.nix
     ./git.nix
     ./kitty.nix
-    ./starship.nix
     ./eza.nix
     ./bat.nix
     ./zoxide.nix
