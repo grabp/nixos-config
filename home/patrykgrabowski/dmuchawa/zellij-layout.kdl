@@ -22,6 +22,7 @@ layout {
   pane_template name="lazygit" {
     command "lazygit"
     args "-sm" "half"
+    close_on_exit true
   }
   pane_template name="docker-compose" {
     command "docker-compose"
@@ -29,10 +30,12 @@ layout {
   pane_template name="make-test" {
     command "make"
     args "test"
+    start_suspended true
   }
   pane_template name="just-watch" {
     command "watch"
     args "-n" "2" "-c" "just"
+    start_suspended true
   }
   pane_template name="ssh-session" {
     command "ssh"
