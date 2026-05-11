@@ -1,6 +1,7 @@
 {
   userConfig,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -82,4 +83,24 @@
       wl-clipboard
       ueberzug
     ];
+
+  systemd.user.sockets.podman = lib.mkIf (!pkgs.stdenv.isDarwin) {
+    Unit.Description = "Podman API Socket";
+    Socket = {
+      ListenStream = "%t/podman/podman.sock";
+      SocketMode = "0660";
+    };
+    Install.WantedBy = [ "sockets.target" ];
+  };
+
+  systemd.user.services.podman = lib.mkIf (!pkgs.stdenv.isDarwin) {
+    Unit = {
+      Description = "Podman API Service";
+      Requires = [ "podman.socket" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.podman}/bin/podman system service";
+      TimeoutStopSec = 30;
+    };
+  };
 }

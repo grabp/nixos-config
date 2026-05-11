@@ -105,6 +105,8 @@ in
         "ohmyzsh/ohmyzsh path:plugins/sudo"
         "ohmyzsh/ohmyzsh path:plugins/aws"
         "ohmyzsh/ohmyzsh path:plugins/docker"
+        "ohmyzsh/ohmyzsh path:plugins/docker-compose"
+        "ohmyzsh/ohmyzsh path:plugins/podman"
       ];
       useFriendlyNames = true;
     };
@@ -188,7 +190,9 @@ in
                   eval "$(/opt/homebrew/bin/brew shellenv zsh)"
                 ''
               else
-                ""
+                ''
+                  export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+                ''
             }
     '';
     profileExtra =

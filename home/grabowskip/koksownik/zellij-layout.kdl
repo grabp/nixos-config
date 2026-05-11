@@ -127,6 +127,17 @@ layout {
     }
   }
 
+  // TMP name
+  tab name="tmp_name" cwd="~/Projects/tmp_name" split_direction="vertical" {
+    pane command="nvim" {
+      focus true
+    }
+    pane size="25%" split_direction="horizontal" {
+      pane
+      pane
+    }
+  }
+
   // Morozko 2.0
   project-view name="Morozko 2.0" cwd="~/Projects/morozko2_0" {
     pnpm-dev start_suspended=true name="Server"

@@ -1,5 +1,5 @@
 # Apply catppuccin mocha rainbow base theme
-apply_catppuccin lean mocha
+apply_catppuccin classic mocha
 
 # Wizard preferences
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet

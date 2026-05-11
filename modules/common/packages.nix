@@ -4,7 +4,8 @@
   environment.systemPackages = with pkgs; [
     fnm
     poetry
-    uv
+    unstable.uv
+    ruff
     ffmpeg
     prettierd
     nodejs_22

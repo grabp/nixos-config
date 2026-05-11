@@ -170,6 +170,7 @@
     podman = {
       enable = true;
       defaultNetwork.settings.dns_enabled = true;
+      dockerSocket.enable = true;
     };
   };
 
