@@ -28,6 +28,13 @@
     username = "${userConfig.name}";
     homeDirectory =
       if pkgs.stdenv.isDarwin then "/Users/${userConfig.name}" else "/home/${userConfig.name}";
+    # Fix for Python testing.postgresql: ensure real Nix store PostgreSQL
+    # path comes before home-manager symlinks, so `which initdb` returns
+    # the real path and initdb can find its data files (postgres.bki)
+    sessionPath = [ "${pkgs.postgresql_15}/bin" ];
+    sessionVariables = {
+      PGSHAREDIR = "${pkgs.postgresql_15}/share/postgresql";
+    };
   };
 
   # Ensure common packages are installed

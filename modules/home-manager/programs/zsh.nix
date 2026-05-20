@@ -195,6 +195,11 @@ in
                 ''
             }
     '';
+    initExtra = ''
+      # Ensure PostgreSQL from Nix store comes before .nix-profile symlinks
+      export PATH="${pkgs.postgresql_15}/bin:$PATH"
+      export PGSHAREDIR="${pkgs.postgresql_15}/share/postgresql"
+    '';
     profileExtra =
       if pkgs.stdenv.isDarwin then
         ''
