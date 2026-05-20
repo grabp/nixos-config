@@ -71,6 +71,7 @@
           flash-nvim
           friendly-snippets
           gitsigns-nvim
+          incline-nvim
           indent-blankline-nvim
           lualine-nvim
           neo-tree-nvim

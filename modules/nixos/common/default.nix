@@ -72,8 +72,6 @@
     settings = {
       General = {
         Experimental = true;
-        # Use "bredr" for AirPods Pro compatibility
-        ControllerMode = "bredr";
       };
     };
   };

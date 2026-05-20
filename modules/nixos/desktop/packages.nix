@@ -21,6 +21,7 @@
     heroic
     cider-2
     signal-desktop
+    unstable.openrgb
 
     # Gaming
     gamemode

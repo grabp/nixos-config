@@ -9,6 +9,7 @@
     ffmpeg
     prettierd
     nodejs_22
+    wireguard-tools
 
     nixos-generators
     sops

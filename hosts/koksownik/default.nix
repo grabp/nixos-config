@@ -77,4 +77,5 @@
       origin = "flathub";
     }
   ];
+  services.hardware.openrgb.enable = true;
 }
