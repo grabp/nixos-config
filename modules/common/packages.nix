@@ -16,5 +16,7 @@
     age
     just
     go
+    bruno
+    bruno-cli
   ];
 }

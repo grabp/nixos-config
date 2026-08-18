@@ -1,12 +1,20 @@
 keys:
   - &main-pgp 6C4D33083EDEF83D043C897BD4ADECA93F52036C
   - &koksownik age1lxhl5pej6ujweeajdvmspcvuusjs93fhfrau3ym7tzr8ercvvslsmw2vuk
+  - &iqvia-mbp age10eysz9tmpa22gkgr3ulmmmy870q4gcukwl4enxqp4r8y8wp8lpxsmmuyq7
 
 creation_rules:
   - path_regex: ^secrets/koksownik\.yaml$
     key_groups:
       - age:
           - *koksownik
+        pgp:
+          - *main-pgp
+
+  - path_regex: ^secrets/iqvia-mbp\.yaml$
+    key_groups:
+      - age:
+          - *iqvia-mbp
         pgp:
           - *main-pgp
 

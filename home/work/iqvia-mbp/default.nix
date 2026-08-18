@@ -23,7 +23,8 @@
     awscli
     saml2aws
     unstable.cursor-cli
-    unstable.code-cursor
+    allure
+    openjdk17
   ];
 
   programs.k9s = {
