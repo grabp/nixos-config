@@ -25,6 +25,7 @@
     unstable.cursor-cli
     allure
     openjdk17
+    vale
   ];
 
   programs.k9s = {

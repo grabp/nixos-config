@@ -16,6 +16,7 @@
     ];
     brews = [
       "pinentry-mac"
+      "opa"
     ];
   };
 }
